@@ -1,0 +1,39 @@
+.mdl-layout__header {
+
+  .mdl-layout_header--section-title {
+    font-size: 56px !important;
+    font-weight: 400;
+    line-height: 1.5 !important;
+    color: white;
+    max-width: 70%;
+  }
+
+  &.is-compact {
+    .mdl-layout_header--section-title {
+      font-size: 18px !important;
+      line-height: 1 !important;
+      font-weight: 400;
+      color: white;
+    }
+
+    .mdl-layout_header--top-section {
+      padding: 0;
+    }
+  }
+
+  .mdl-layout_header--top-section {
+    padding: 80px 16px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header {
+    display: inherit !important;
+  }
+}
+
+#waterfall-search,
+.mdl-button--icon.mdl-button--search {
+  color: white;
+}

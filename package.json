@@ -33,8 +33,12 @@
     "commitizen": "2.5.0",
     "cz-conventional-changelog": "1.1.5",
     "ghooks": "1.0.3",
+    "gulp": "^3.9.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-sass": "^2.1.1",
     "istanbul": "0.4.2",
     "mocha": "2.3.4",
+    "run-sequence": "^1.1.5",
     "semantic-release": "^4.3.5"
   },
   "config": {
