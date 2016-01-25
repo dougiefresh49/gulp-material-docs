@@ -1,0 +1,48 @@
+{
+  "name": "gulp-material-docs",
+  "version": "0.0.0-semantically-released",
+  "description": "A gulp plugin to create Material Design inspired documentation",
+  "main": "index.js",
+  "scripts": {
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "test": "istanbul cover -x *.spec.js _mocha -- -R spec tests",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dougiefresh49/gulp-material-docs.git"
+  },
+  "keywords": [
+    "gulp",
+    "angular",
+    "material",
+    "design",
+    "docs"
+  ],
+  "author": "Doug Lasater <doug.lasater.3@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dougiefresh49/gulp-material-docs/issues"
+  },
+  "homepage": "https://github.com/dougiefresh49/gulp-material-docs#readme",
+  "devDependencies": {
+    "chai": "3.4.1",
+    "codecov.io": "0.1.6",
+    "commitizen": "2.5.0",
+    "cz-conventional-changelog": "1.1.5",
+    "ghooks": "1.0.3",
+    "istanbul": "0.4.2",
+    "mocha": "2.3.4",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm test"
+    }
+  }
+}
