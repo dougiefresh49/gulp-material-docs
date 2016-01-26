@@ -56,6 +56,7 @@
 
         /* Attributes */
         vm.title = 'HeaderController';
+        vm.headerTitle = NG_DOCS.__options.title || 'Material Docs';
 
         /* Functions */
         vm.isActiveSection = mtdNavSectionService.isActiveSection;

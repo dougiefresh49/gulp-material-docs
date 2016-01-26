@@ -48,10 +48,10 @@
      */
 
 
-    NavDrawerController.$inject = ['mtdConfigService', 'mtdNavSectionService'];
+    NavDrawerController.$inject = ['mtdNavSectionService'];
 
     /* @ngInject */
-    function NavDrawerController(mtdConfigService, mtdNavSectionService) {
+    function NavDrawerController(mtdNavSectionService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -74,11 +74,11 @@
         ////////////////
 
         function activate() {
-            vm.companyName = mtdConfigService.MATERIAL_DOCS.legal.companyName;
-            vm.privacyLink = mtdConfigService.MATERIAL_DOCS.legal.privacyLink;
-            vm.termsLink = mtdConfigService.MATERIAL_DOCS.legal.termsLink;
-            vm.imageLink = mtdConfigService.NG_DOCS.__options.imageLink;
-            vm.image = mtdConfigService.NG_DOCS.__options.image;
+            vm.companyName = NG_DOCS.__options.legal.companyName;
+            vm.privacyLink = NG_DOCS.__options.legal.privacyLink;
+            vm.termsLink = NG_DOCS.__options.legal.termsLink;
+            vm.imageLink = NG_DOCS.__options.imageLink;
+            vm.image = NG_DOCS.__options.image;
         }
 
         function canShowLink(attr) {

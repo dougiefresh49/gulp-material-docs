@@ -10,10 +10,10 @@
         .module('docsApp')
         .factory('mtdNavSectionService', mtdNavSectionService);
 
-    mtdNavSectionService.$inject = ['mtdConfigService', 'mtdNaveModulesService'];
+    mtdNavSectionService.$inject = ['mtdNaveModulesService'];
 
     /* @ngInject */
-    function mtdNavSectionService(mtdConfigService, mtdNaveModulesService) {
+    function mtdNavSectionService(mtdNaveModulesService) {
         var activeSection = '';
 
 
@@ -38,9 +38,9 @@
             var cachedSections = getCachedSections();
 
             // Add pages and modules to each section
-            angular.forEach(mtdConfigService.NG_DOCS.sections, function(sectionName, url) {
+            angular.forEach(NG_DOCS.sections, function(sectionName, url) {
                 var section = {
-                    url: (mtdConfigService.NG_DOCS.html5Mode ? '' : '#/') + url,
+                    url: (NG_DOCS.html5Mode ? '' : '#/') + url,
                     name: sectionName,
                     pages: cachedSections[url] || {},
                     showSubSections: false
@@ -74,8 +74,7 @@
             var cachedSections = {};
 
             // save pages for each section in cachedSections
-            mtdConfigService
-                .NG_DOCS
+            NG_DOCS
                 .pages
                 .forEach(function (page) {
                     var url = page.section + '/' +  page.id;
@@ -85,7 +84,7 @@
                     else {
                         page.partialUrl = 'partials/' + url.replace(':', '.') + '.html';
                     }
-                    page.url = (mtdConfigService.NG_DOCS.html5Mode ? '' : '#/') + url;
+                    page.url = (NG_DOCS.html5Mode ? '' : '#/') + url;
 
                     if (!cachedSections[page.section]) {
                         cachedSections[page.section] = {};
