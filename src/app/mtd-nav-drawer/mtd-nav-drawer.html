@@ -1,0 +1,39 @@
+<div class="mdl-layout__drawer mdl-color--white mdl-color-text--grey-800">
+    <div class="mdl-layout__drawer-wrapper">
+        <header id="logo" class="mdl-layout__header-row">
+            <a href="{{ vm.imageLink }}">
+                <img class="pull-left" src="{{ vm.image }}">
+            </a>
+        </header>
+
+        <nav class="mdl-navigation">
+
+            <!-- Sections List -->
+            <div ng-repeat="(id, section) in vm.sections | orderBy: 'name' ">
+
+                <!-- Section Link -->
+                <a class="mdl-navigation__link section-link"
+                   ng-class="{'active--section-link' : vm.isActiveSection(section.url)}"
+                   ng-click="vm.toggleSection(section)"
+                   href="{{ section.url }}">
+                    {{ section.name }}
+                </a>
+
+                <!-- Section Content -->
+                <nav ng-if="vm.canShowSubSections(section)" class="mdl-navigation mdl-color--white mdl-color-text--grey-800">
+                    <mtd-nav-modules modules="section.modules"></mtd-nav-modules>
+                </nav>
+            </div>
+        </nav>
+
+        <div class="mdl-legal">
+            <p ng-if="vm.canShowLink(vm.companyName)">{{ vm.companyName}} © </p>
+            <div class="privacy-and-terms">
+                <a ng-if="vm.canShowLink(vm.privacyLink)" href="{{ vm.privacyLink }}">Privacy</a>
+                <span ng-if="vm.canShowLink(vm.privacyLink) && vm.canShowLink(vm.termsLink)"> & </span>
+                <a ng-if="vm.canShowLink(vm.termsLink)" href="{{vm.termsLink}}">Terms</a>
+            </div>
+            <p class="powered-by">Powered by <a href="https://github.com/dougiefresh49/gulp-material-docs"> Gulp Material Docs </a></p>
+        </div>
+    </div>
+</div>
