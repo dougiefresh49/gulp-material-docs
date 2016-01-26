@@ -6,22 +6,6 @@ describe('Gulp Material Docs', function () {
 
     describe('Helpers', function () {
 
-        describe('Update Source Link Options', function () {
-
-            it('replace default version with specified version', function () {
-                expect(helpers.getSrc('1.0.5', helpers.materialOpts)).to.be.eql('https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js');
-            });
-
-            it('should provide default angular version of 1.4.5', function () {
-                expect(helpers.getSrc(undefined, helpers.materialOpts)).to.be.eql('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js');
-            });
-            
-            it('should use default version if empty string is passes in', function () {
-                expect(helpers.getSrc('', helpers.materialOpts)).to.be.eql('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js');
-            });
-
-        });
-
         describe('Get Default Options', function () {
 
             it('should have default template from dist', function () {
@@ -31,12 +15,12 @@ describe('Gulp Material Docs', function () {
 
             it('should have default scrips', function () {
                 var defaults = helpers.getDefaultOptions();
-                expect(defaults.scripts.length).to.be.eql(2);
+                expect(defaults.scripts.length).to.be.eql(1);
             });
 
             it('should have default scrips', function () {
                 var defaults = helpers.getDefaultOptions();
-                expect(defaults.styles.length).to.be.eql(2);
+                expect(defaults.styles.length).to.be.eql(1);
             });
 
             it('should have default legal info', function () {
@@ -47,24 +31,88 @@ describe('Gulp Material Docs', function () {
             });
         });
 
-        describe('Get Scripts', function () {
+        describe('Get Legal Object', function () {
 
-            it('should get scripts when versions are supplied', function () {
-                var scripts = helpers.getScripts('1.0.5');
-                expect(scripts.length).to.be.eql(2);
-                expect(scripts[0]).to.be.eql('https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js');
+            it('should get legal object if no data supplied', function () {
+                expect(helpers.getLegalObj().companyName).to.be.eql('');
+                expect(helpers.getLegalObj().privacyLink).to.be.eql('');
+                expect(helpers.getLegalObj().termsLink).to.be.eql('');
             });
 
-            it('should get scripts when versions are NOT supplied', function () {
-                var scripts = helpers.getScripts();
-                expect(scripts.length).to.be.eql(2);
-                expect(scripts[0]).to.be.eql('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js');
+            it('should get legal object if data supplied', function () {
+                var legalObj = {companyName: 'company'};
+                expect(helpers.getLegalObj(legalObj).companyName).to.be.eql('company');
+                expect(helpers.getLegalObj(legalObj).privacyLink).to.be.eql('');
+                expect(helpers.getLegalObj(legalObj).termsLink).to.be.eql('');
             });
+
         });
 
     });
 
     describe('Make Docs', function () {
+
+        it('should accept make docs with default options', function () {
+            var fileStream = materialDocs.make();
+            expect(fileStream).to.be.a('object');
+        });
+
+        it('should accept make docs with basic options', function () {
+            var options = {
+                html5Mode: false,
+                title: "Gulp Material Docs",
+                startPage: '/materialDocs',
+                imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
+                titleLink: "/materialDocs"
+            };
+
+            var fileStream = materialDocs.make(options);
+            expect(fileStream).to.be.a('object');
+        });
+
+        it('should accept make docs with more options', function () {
+            var options = {
+                html5Mode: false,
+                title: "Gulp Material Docs",
+                startPage: '/materialDocs',
+                image: 'dist/material-docs.svg',
+                template: 'dist/index.html',
+                imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
+                titleLink: "/materialDocs"
+            };
+
+            var fileStream = materialDocs.make(options);
+            expect(fileStream).to.be.a('object');
+        });
+
+    });
+
+    describe('Get Sources to Inject', function () {
+
+        it('should get 7 default src scripts', function () {
+            expect(materialDocs.srcToInject().length).to.be.eql(7);
+            expect(materialDocs.srcToInject()[0]).to.be.eql('docs/js/docs-setup.js');
+        });
+
+        it('should get src scripts with given folder', function () {
+            var src = materialDocs.srcToInject('my-docs', {});
+            expect(src.length).to.be.eql(7);
+            expect(src[0]).to.be.eql('my-docs/js/docs-setup.js');
+
+        });
+
+        it('should get src scripts with options', function () {
+            var options = {
+                angularPath: 'some/path/to/angular.min.js',
+                ngAnimatePath: 'some/path/to/angular-animate.min.js'
+            };
+            var src = materialDocs.srcToInject('my-docs', options);
+            expect(src.length).to.be.eql(7);
+            expect(src[0]).to.be.eql('my-docs/js/docs-setup.js');
+            expect(src[1]).to.be.eql('my-docs/js/some/path/to/angular.min.js');
+            expect(src[2]).to.be.eql('my-docs/js/some/path/to/angular-animate.min.js');
+
+        });
 
     });
 
