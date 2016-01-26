@@ -81,7 +81,7 @@ gulp.task('clean', function(callback) {
     return del([
             config.folders.dist,
             config.folders.temp,
-            config.folders.usrDocs
+            config.folders.docs
         ],
         { force: true }
         , callback);

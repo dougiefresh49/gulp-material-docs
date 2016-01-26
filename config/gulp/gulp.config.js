@@ -8,8 +8,7 @@ module.exports = function() {
             dist: 'dist/',
             docs: 'docs/',
             coverage: 'coverage/',
-            temp: 'src/temp/',
-            usrDocs: 'usr-docs'
+            temp: 'src/temp/'
         },
         /* Angular Template Cache */
         templateCache: {
