@@ -28,10 +28,23 @@ module.exports = function() {
         ],
         toInject : {
             dev: [
-                'dist/**/*.js',
-                '!dist/**/*.min.js',
-                'dist/**/*.css',
-                '!dist/**/*.min.css'
+                'docs/js/docs-setup.js',
+                'docs/js/angular.min.js',
+                'docs/js/angular-animate.min.js',
+                'docs/**/*material-docs.*',
+                '!docs/**/*material-docs.min.*',
+                'docs/css/docs.css',
+                'docs/css/animations.css',
+                'docs/css/prettify.css'
+            ],
+            docs: [
+                'docs/js/docs-setup.js',
+                'docs/js/angular.min.js',
+                'docs/js/angular-animate.min.js',
+                'docs/**/*material-docs.min.*',
+                'docs/css/docs.css',
+                'docs/css/animations.css',
+                'docs/css/prettify.css'
             ],
             prod : [
                 'dist/**/*.min.js',

@@ -3,32 +3,44 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     plugins = require('gulp-load-plugins')({lazy: true}),
     config = require('./config/gulp/gulp.config.js')(),
-    materialDocs = require('./index.js');
+    materialDocs = require('./index.js'),
+    packageJson = require('./package.json');
 
-
+/* Main Task for Building */
 gulp.task('default', function(callback) {
     runSequence(
         'clean',
         'build',
         'minify',
-        'inject',
+        'docs',
         callback);
 });
 
+/* Main Task for Running / Building Locally */
 gulp.task('dev', function(callback) {
     runSequence(
         'clean',
         'build',
-        'inject:dev',
+        'docs:make',
+        'docs:inject::dev',
         callback);
 });
 
-gulp.task('docs', function() {
-    // TODO: this will build the docs for the material doc generator :O
+/////////////
+
+/* Sub-Tasks */
+gulp.task('docs', function(callback) {
+    runSequence(
+        'docs:make',
+        'docs:inject',
+        callback);
+});
+
+gulp.task('docs:make', function() {
     var sections = {
         materialDocs: {
             glob: config.allJs,
-            title: 'Material Docs'
+            title: 'Website'
         }
     };
 
@@ -36,19 +48,34 @@ gulp.task('docs', function() {
         html5Mode: false,
         title: "Gulp Material Docs",
         startPage: '/materialDocs',
-        image: '',
         imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
-        titleLink: "/materialDocs",
-        //template: config.folders.dist + 'index.html',
-        poop: 'poop'
+        titleLink: "/materialDocs"
     };
 
     return materialDocs
         .sections(sections)
         .pipe(materialDocs.make(options))
         .pipe(gulp.dest(config.folders.docs));
-
 });
+
+gulp.task('docs:inject', function() {
+    var toInject = gulp.src(materialDocs.srcToInject('docs/'), { read: false });
+
+    return gulp
+        .src('docs/index.html')
+        .pipe(plugins.inject(toInject, {ignorePath: 'docs', addRootSlash: false}))
+        .pipe(gulp.dest('docs/'));
+});
+
+gulp.task('docs:inject::dev', function() {
+    var toInject = gulp.src(config.toInject.dev, { read: false });
+
+    return gulp
+        .src('docs/index.html')
+        .pipe(plugins.inject(toInject, {ignorePath: 'docs', addRootSlash: false}))
+        .pipe(gulp.dest('docs/'));
+});
+
 
 gulp.task('clean', function(callback) {
     return del([
@@ -60,7 +87,7 @@ gulp.task('clean', function(callback) {
         , callback);
 });
 
-gulp.task('build', ['build:app', 'build:sass']);
+gulp.task('build', ['build:app', 'build:assets', 'build:html']);
 
 
 gulp.task('build:app', ['build:template-cache'], function() {
@@ -69,7 +96,16 @@ gulp.task('build:app', ['build:template-cache'], function() {
     return gulp
         .src(allJs)
         .pipe(plugins.concat('material-docs.js'))
+        .pipe(plugins.insert.prepend(getScriptHeader()))
         .pipe(gulp.dest(config.folders.dist));
+});
+
+gulp.task('build:assets', ['build:sass', 'build:images']);
+
+gulp.task('build:images', function() {
+    return gulp
+        .src(['src/assets/images/**/*'])
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('build:sass', function() {
@@ -79,6 +115,12 @@ gulp.task('build:sass', function() {
        .pipe(gulp.dest(config.folders.src + 'assets/styles/'))
        .pipe(plugins.rename('material-docs.css'))
        .pipe(gulp.dest(config.folders.dist));
+});
+
+gulp.task('build:html', function() {
+    return gulp
+        .src('src/index.html')
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('build:template-cache', function() {
@@ -93,31 +135,9 @@ gulp.task('build:template-cache', function() {
         .pipe(gulp.dest(config.folders.temp));
 });
 
-gulp.task('inject', function() {
-    console.log(config.toInject.prod);
-    var sources = gulp.src(config.toInject.prod, { read: false });
-
-    return gulp
-        .src('src/index.html')
-        .pipe(plugins.inject(sources, {ignorePath: 'dist', addRootSlash: false}))
-        .pipe(gulp.dest('dist/'));
-});
-
-
-gulp.task('inject:dev', function() {
-    var sources = gulp.src(config.toInject.dev, { read: false });
-
-    return gulp
-        .src('src/index.html')
-        .pipe(plugins.inject(sources, {ignorePath: 'dist', addRootSlash: false}))
-        .pipe(gulp.dest('dist/'));
-
-});
-
 gulp.task('minify', ['minify:app', 'minify:css']);
 
 gulp.task('minify:app', function() {
-    // TODO: add package text
     var src = [
         config.folders.dist + '*.js',
         '!' + config.folders.dist + '*.min.js'
@@ -127,6 +147,7 @@ gulp.task('minify:app', function() {
         .src(src)
         .pipe(plugins.stripDebug())
         .pipe(plugins.uglify())
+        .pipe(plugins.insert.prepend(getScriptHeader()))
         .pipe(plugins.rename({extname: '.min.js'}))
         .pipe(gulp.dest(config.folders.dist));
 });
@@ -136,5 +157,15 @@ gulp.task('minify:css', function() {
         .src('./dist/material-docs.css')
         .pipe(plugins.cssnano())
         .pipe(plugins.rename({extname: '.min.css'}))
+        .pipe(plugins.insert.prepend(getScriptHeader()))
         .pipe(gulp.dest(config.folders.dist));
 });
+
+/* --- Helper Functions --- */
+function getScriptHeader() {
+    return '/*\n' +
+    '  Gulp Material Docs v' + packageJson.version + ' \n' +
+    '  https://github.com/dougiefresh49/gulp-material-docs \n' +
+    '  License: MIT \n' +
+    '*/ \n'
+}
