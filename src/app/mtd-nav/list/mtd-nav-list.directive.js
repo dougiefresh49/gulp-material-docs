@@ -8,14 +8,15 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.nav.directive:NavList
+     * @name docsApp.nav.directive:mtdNavList
      * @scope
      * @restrict E
      *
      * @description
      * Directive for the docsApp module.  It...
      *
-     * @param {object}  objectList   List of objects to display in the side nav bar
+     * @param {object}  objectList   List of page objects to display in the {@link docsApp.nav.directive:mtdNavDrawer NavDrawer}
+     * @param {string}  activeLink   The current active link as determined bt the {@link docsApp.nav.directive:mtdNavModules mtdNavModules} directive
      *
      */
 
@@ -44,7 +45,9 @@
      * @ngdoc controller
      * @name docsApp.nav.controller:NavListController
      * @description
-     * The main view controller for the NavList directive
+     * The main view controller for the {@link docsApp.nav.directive:mtdNavList mtdNavList} directive
+     *
+     * @requires docsApp.search.service:mtdSearchService
      */
 
 

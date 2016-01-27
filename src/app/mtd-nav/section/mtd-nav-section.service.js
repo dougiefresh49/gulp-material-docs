@@ -11,11 +11,11 @@
      * @name docsApp.nav.service:mtdNavSectionService
      *
      * @description
-     * The mtdNavSectionService ...
+     * The mtdNavSectionService is responsible for creating, opening, and keeping track of the active sections.
      *
+     * @requires docsApp.nav.service:mtdNaveModulesService
      */
 
-        // TODO: add requires
     angular
         .module('docsApp.nav')
         .factory('mtdNavSectionService', mtdNavSectionService);

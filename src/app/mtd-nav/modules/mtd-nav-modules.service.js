@@ -6,6 +6,16 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name docsApp.nav.service:mtdNaveModulesService
+     *
+     * @description
+     * The main service for generating and fetching the modules visible in the
+     * {@link docsApp.nav.directive:mtdNavDrawer NavDrawer}
+     *
+     */
+
     angular
         .module('docsApp.nav')
         .factory('mtdNaveModulesService', mtdNaveModulesService);

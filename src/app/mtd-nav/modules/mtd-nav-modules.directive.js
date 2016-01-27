@@ -8,14 +8,14 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.nav.directive:NavModules
+     * @name docsApp.nav.directive:mtdNavModules
      * @scope
      * @restrict E
      *
      * @description
-     * Directive for the docsApp module.  It...
+     * Directive responsible for displaying and toggling each module and its contents in the {@link docsApp.nav.directive:mtdNavDrawer NavDrawer}
      *
-     * @param {object}  modules   List of modules to display
+     * @param {object}  modules   List of modules to display, created by the {@link docsApp.nav.service:mtdNaveModulesService mtdNavModulesService}
      *
      */
 
@@ -45,7 +45,11 @@
      * @ngdoc controller
      * @name docsApp.nav.controller:NavModulesController
      * @description
-     * The main view controller for the NavModule directive
+     * The main view controller for the {@link docsApp.nav.directive:mtdNavModules mtdNavModules} directive
+     *
+     * @requires $location
+     * @requires $scope
+     * @requires docsApp.search.service:mtdSearchService
      */
 
 

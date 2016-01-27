@@ -8,15 +8,15 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.nav.directive:NavDrawer
+     * @name docsApp.nav.directive:mtdNavDrawer
      * @scope
      * @restrict E
      *
      * @description
-     * Directive for the docsApp module.  It...
+     * Directive for the docsApp.nav module.  It is the main panel the user will see on the left.
+     * If the screen is too small, it will be hidden and can be accessed with the menu icon
      *
-     * @param {object}  sections    List of Sections created by DocsController
-     * @param {object}  modules    List of Modules created by DocsController
+     * @param {object}  sections    List of Sections created by {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
      *
      */
 
@@ -44,7 +44,9 @@
      * @ngdoc controller
      * @name docsApp.nav.controller:NavDrawerController
      * @description
-     * The main view controller for the NavDrawer directive
+     * The main view controller for the {@link docsApp.nav.directive:mtdNavDrawer mtdNavDrawer} directive
+     *
+     * @requires docsApp.nav.service:mtdNavSectionService
      */
 
 
