@@ -6,6 +6,16 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name docsApp.search.service:mtdSearchService
+     *
+     * @description
+     * The main service for searching. It will will apply ranks to each page and keep track of
+     * the user's searching status.
+     *
+     */
+
     angular
         .module('docsApp.search')
         .factory('mtdSearchService', mtdSearchService);

@@ -8,14 +8,15 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:mtdSearch
+     * @name docsApp.search.directive:mtdSearch
      * @scope
      * @restrict E
      *
      * @description
-     * Directive for the docsApp.search module.  It...
+     * Directive for the docsApp.search module.  It is responsible for the search form and setting the status of
+     * the user's search activity
      *
-     * @param {object}  modules   List of modules built by DocsController
+     * @param {object}  sections   List of Sections created by {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
      *
      */
 
@@ -44,8 +45,10 @@
      * @name docsApp.search.controller:SearchController
      * @description
      * The main view controller for the Search directive
+     *
+     * @requires ng.$location
+     * @requires docsApp.search.service:mtdSearchService
      */
-
 
     SearchController.$inject = ['$location', 'mtdSearchService'];
 
