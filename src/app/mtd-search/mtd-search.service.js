@@ -7,7 +7,7 @@
     'use strict';
 
     angular
-        .module('docsApp')
+        .module('docsApp.search')
         .factory('mtdSearchService', mtdSearchService);
 
     mtdSearchService.$inject = [];
@@ -72,7 +72,6 @@
 
             return rank;
         }
-
 
     }
 

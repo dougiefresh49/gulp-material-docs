@@ -8,19 +8,19 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:Search
+     * @name docsApp.directive:mtdSearch
      * @scope
      * @restrict E
      *
      * @description
-     * Directive for the docsApp module.  It...
+     * Directive for the docsApp.search module.  It...
      *
      * @param {object}  modules   List of modules built by DocsController
      *
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.search')
         .directive('mtdSearch', mtdSearchSearch);
 
     function mtdSearchSearch() {
@@ -41,7 +41,7 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:SearchController
+     * @name docsApp.search.controller:SearchController
      * @description
      * The main view controller for the Search directive
      */

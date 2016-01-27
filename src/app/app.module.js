@@ -14,7 +14,11 @@
      * The docsApp module definition.
      *
      * @requires ngAnimate
+     * @requires docsApp.body
      * @requires docsApp.chapter
+     * @requires docsApp.header
+     * @requires docsApp.nav
+     * @requires docsApp.search
      */
 
     angular.module('docsApp', [
@@ -22,7 +26,8 @@
         'docsApp.body',
         'docsApp.chapter',
         'docsApp.header',
-        'docsApp.nav'
+        'docsApp.nav',
+        'docsApp.search'
     ]);
 
 })();
