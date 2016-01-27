@@ -8,14 +8,15 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.header.directive:Header
+     * @name docsApp.header.directive:mtdHeader
      * @scope
      * @restrict E
      *
      * @description
-     * Directive for the docsApp module.  It...
+     * Directive for the docsApp module.  It will display the main site name along with the name of the active section.
+     * On scroll, the header will shrink.
      *
-     * @param {object}  sections    List of Sections created by DocsController
+     * @param {object}  sections    List of Sections created by {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
      *
      */
 
@@ -44,8 +45,10 @@
      * @name docsApp.header.controller:HeaderController
      * @description
      * The main view controller for the Header directive
+     *
+     * @requires docsApp.nav.service:mtdNavSectionService
+     *
      */
-
 
     HeaderController.$inject = ['mtdNavSectionService'];
 
