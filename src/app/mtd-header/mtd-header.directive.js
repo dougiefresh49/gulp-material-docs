@@ -8,7 +8,7 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:Header
+     * @name docsApp.header.directive:Header
      * @scope
      * @restrict E
      *
@@ -20,7 +20,7 @@
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.header')
         .directive('mtdHeader', mtdHeaderHeader);
 
     function mtdHeaderHeader() {
@@ -41,7 +41,7 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:HeaderController
+     * @name docsApp.header.controller:HeaderController
      * @description
      * The main view controller for the Header directive
      */

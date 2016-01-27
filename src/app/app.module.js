@@ -20,6 +20,7 @@
     angular.module('docsApp', [
         'ngAnimate',
         'docsApp.chapter',
+        'docsApp.header',
         'docsApp.nav'
     ]);
 
