@@ -6,6 +6,17 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc object
+     * @name docsApp.object:config
+     *
+     * @description
+     * The configuration function for the docsApp. It will set the application with HTML5 mode or not based on the
+     * users given configuration
+     *
+     * @requires ng.$locationProvider
+     */
+
     angular
         .module('docsApp')
         .config(config);
