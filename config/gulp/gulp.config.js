@@ -44,10 +44,6 @@ module.exports = function() {
                 'docs/css/docs.css',
                 'docs/css/animations.css',
                 'docs/css/prettify.css'
-            ],
-            prod : [
-                'dist/**/*.min.js',
-                'dist/**/*.min.css'
             ]
         }
     };
