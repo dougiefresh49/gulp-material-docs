@@ -16,7 +16,7 @@
      * Directive for the docsApp module.  It...
      *
      * @param {object}  currentPage   Current Page object created & set in the {@link docsApp.controller:BodyController BodyController}
-     * @param {object}  sections   Sections object created {@link docsApp.service:mtdNavSectionService mtdNavSectionService}
+     * @param {object}  sections   Sections object created {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
      *
      */
 
