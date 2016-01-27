@@ -8,7 +8,7 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:NavDrawer
+     * @name docsApp.nav.directive:NavDrawer
      * @scope
      * @restrict E
      *
@@ -21,13 +21,13 @@
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.nav')
         .directive('mtdNavDrawer', mtdNavDrawerNavDrawer);
 
     function mtdNavDrawerNavDrawer() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'app/mtd-nav-drawer/mtd-nav-drawer.html',
+            templateUrl: 'app/mtd-nav/drawer/mtd-nav-drawer.html',
             scope: {
                 sections: '='
             },
@@ -42,7 +42,7 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:NavDrawerController
+     * @name docsApp.nav.controller:NavDrawerController
      * @description
      * The main view controller for the NavDrawer directive
      */

@@ -8,7 +8,7 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:NavModules
+     * @name docsApp.nav.directive:NavModules
      * @scope
      * @restrict E
      *
@@ -20,7 +20,7 @@
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.nav')
         .directive('mtdNavModules', mtdNavModules);
 
     mtdNavModules.$inject = [];
@@ -29,7 +29,7 @@
     function mtdNavModules() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'app/mtd-nav-modules/mtd-nav-modules.html',
+            templateUrl: 'app/mtd-nav/modules/mtd-nav-modules.html',
             scope: {
                 modules: '='
             },
@@ -43,7 +43,7 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:NavModulesController
+     * @name docsApp.nav.controller:NavModulesController
      * @description
      * The main view controller for the NavModule directive
      */

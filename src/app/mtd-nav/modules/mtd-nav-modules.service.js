@@ -7,7 +7,7 @@
     'use strict';
 
     angular
-        .module('docsApp')
+        .module('docsApp.nav')
         .factory('mtdNaveModulesService', mtdNaveModulesService);
 
     mtdNaveModulesService.$inject = [];

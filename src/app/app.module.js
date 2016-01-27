@@ -19,7 +19,8 @@
 
     angular.module('docsApp', [
         'ngAnimate',
-        'docsApp.chapter'
+        'docsApp.chapter',
+        'docsApp.nav'
     ]);
 
 })();

@@ -8,7 +8,7 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:NavList
+     * @name docsApp.nav.directive:NavList
      * @scope
      * @restrict E
      *
@@ -20,13 +20,13 @@
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.nav')
         .directive('mtdNavList', mtdNavListNavList);
 
     function mtdNavListNavList() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'app/mtd-nav-list/mtd-nav-list.html',
+            templateUrl: 'app/mtd-nav/list/mtd-nav-list.html',
             scope: {
                 objectList: '=',
                 activeLink: '='
@@ -42,7 +42,7 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:NavListController
+     * @name docsApp.nav.controller:NavListController
      * @description
      * The main view controller for the NavList directive
      */

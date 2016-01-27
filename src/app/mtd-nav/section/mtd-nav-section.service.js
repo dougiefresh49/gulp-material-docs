@@ -6,8 +6,18 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name docsApp.nav.service:mtdNavSectionService
+     *
+     * @description
+     * The mtdNavSectionService ...
+     *
+     */
+
+        // TODO: add requires
     angular
-        .module('docsApp')
+        .module('docsApp.nav')
         .factory('mtdNavSectionService', mtdNavSectionService);
 
     mtdNavSectionService.$inject = ['mtdNaveModulesService'];
