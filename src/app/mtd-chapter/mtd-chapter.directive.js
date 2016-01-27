@@ -8,19 +8,20 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:Chapter
+     * @name docsApp.chapter.directive:Chapter
      * @scope
      * @restrict E
      *
      * @description
      * Directive for the docsApp module.  It...
      *
-     * @param {object}  currentPage   Current Page object created in DocsController
+     * @param {object}  currentPage   Current Page object created & set in the {@link docsApp.controller:BodyController BodyController}
+     * @param {object}  sections   Sections object created {@link docsApp.service:mtdNavSectionService mtdNavSectionService}
      *
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.chapter')
         .directive('mtdChapter', mtdChapterChapter);
 
     function mtdChapterChapter() {
@@ -42,9 +43,15 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:ChapterController
+     * @name docsApp.chapter.controller:ChapterController
      * @description
      * The main view controller for the Chapter directive
+     *
+     * @requires ng.$scope
+     * @requires ng.$location
+     * @requires ng.$anchorScroll
+     * @requires docsApp.chapter:mtdChapterService
+     *
      */
 
 

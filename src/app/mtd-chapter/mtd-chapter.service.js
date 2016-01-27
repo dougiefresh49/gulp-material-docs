@@ -6,8 +6,20 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name docsApp.chapter.service:mtdChapterService
+     *
+     * @description
+     * The main service for generating and updating each chapter when it is loaded.
+     *
+     * @requires docsApp.chapter.service:mtdChapterTocService
+     * @requires docsApp.chapter.service:mtdChapterDependencyService
+     */
+
+        // TODO: add requires for navModules service
     angular
-        .module('docsApp')
+        .module('docsApp.chapter')
         .factory('mtdChapterService', mtdChapterService);
 
     mtdChapterService.$inject = ['mtdChapterTocService', 'mtdNaveModulesService', 'mtdChapterDependencyService'];

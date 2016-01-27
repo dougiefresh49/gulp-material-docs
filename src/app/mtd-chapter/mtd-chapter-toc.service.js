@@ -6,8 +6,19 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name docsApp.chapter.service:mtdChapterTocService
+     *
+     * @description
+     * The main service for generating the Table of Contents (TOC) for each chapter when it is loaded.
+     * It is called from the {@link docsApp.chapter.service:mtdChapterService mtdChapterService}.
+     *
+     * @requires ng.$compile
+     */
+
     angular
-        .module('docsApp')
+        .module('docsApp.chapter')
         .factory('mtdChapterTocService', mtdChapterTocService);
 
     mtdChapterTocService.$inject = ['$compile'];

@@ -6,8 +6,19 @@
 (function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name docsApp.chapter.service:mtdChapterDependencyService
+     *
+     * @description
+     * A service for updating the names of dependencies in each chapter
+     *
+     */
+
+        // TODO: add documentation for requiring mtdNaveModulesService
+
     angular
-        .module('docsApp')
+        .module('docsApp.chapter')
         .factory('mtdChapterDependencyService', mtdChapterDependencyService);
 
     mtdChapterDependencyService.$inject = ['mtdNaveModulesService'];

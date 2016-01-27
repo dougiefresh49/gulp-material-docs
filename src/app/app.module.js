@@ -12,8 +12,14 @@
      * @description
      *
      * The docsApp module definition.
+     *
+     * @requires ngAnimate
+     * @requires docsApp.chapter
      */
 
-    angular.module('docsApp', ['ngAnimate']);
+    angular.module('docsApp', [
+        'ngAnimate',
+        'docsApp.chapter'
+    ]);
 
 })();
