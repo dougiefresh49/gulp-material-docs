@@ -8,7 +8,7 @@
 
     /**
      * @ngdoc directive
-     * @name docsApp.directive:Body
+     * @name docsApp.body.directive:mtdBody
      * @scope
      * @restrict E
      *
@@ -19,7 +19,7 @@
      */
 
     angular
-        .module('docsApp')
+        .module('docsApp.body')
         .directive('mtdBody', mtdBodyBody);
 
     function mtdBodyBody() {
@@ -38,9 +38,13 @@
 
     /**
      * @ngdoc controller
-     * @name docsApp.controller:BodyController
+     * @name docsApp.body.controller:BodyController
      * @description
      * The main view controller for the Body directive
+     *
+     * @requires ng.$scope
+     * @requires ng.$location
+     * @requires docsApp.nav.service:mtdNavSectionService
      */
 
 
