@@ -36,12 +36,11 @@
         function addTableOfContents(scope) {
             var chapterHtml = angular.element( document.querySelector('#chapterBody')).html();
             var toc = createTableOfContents(chapterHtml);
-            var descriptionElement = angular.element( document.querySelector('#description').parentNode);
 
-            if(descriptionElement !== null) {
+            if(document.querySelector('#description') !== null) {
                 // Note: see this SO for explanation on compiling attached html
                 // http://stackoverflow.com/questions/29925950/append-a-html-include-ng-click-in-angularjs
-                descriptionElement.prepend($compile(toc)(scope));
+                angular.element( document.querySelector('#description').parentNode).prepend($compile(toc)(scope));
             }
         }
 
