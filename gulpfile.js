@@ -38,18 +38,22 @@ gulp.task('docs', function(callback) {
 
 gulp.task('docs:make', function() {
     var sections = {
-        materialDocs: {
+        viewer: {
             glob: config.allJs,
-            title: 'Website'
+            title: 'Docs Viewer'
+        },
+        setup: {
+            glob: 'gulp-usage.ngdoc',
+            title: 'Setup'
         }
     };
 
     var options = {
         html5Mode: false,
         title: "Gulp Material Docs",
-        startPage: '/materialDocs',
+        startPage: '/viewer',
         imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
-        titleLink: "/materialDocs"
+        titleLink: "/viewer"
     };
 
     return materialDocs
