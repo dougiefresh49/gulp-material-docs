@@ -1,9 +1,13 @@
-@id gulp
+@id Adding to Your Gulpfile
 @ngdoc overview
 @name gulp-usage
 @description
 
 With two simple gulp tasks, you will have your beautiful docs ready to go
+
+## Install gulp-material-docs
+
+`npm install --save-dev gulp-material-docs`
 
 ## Setup at the top of the gulpfile
 
