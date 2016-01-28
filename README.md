@@ -76,18 +76,18 @@ gulp.task('docs:inject', ['docs:make'], function() {
 ## Building Material Docs Locally
 1. Clone the repository from [GitHub](https://github.com/dougiefresh49/gulp-material-docs)
 
-`git clone https://github.com/dougiefresh49/gulp-material-docs.git`
+    `git clone https://github.com/dougiefresh49/gulp-material-docs.git`
 
 2. Install the dependencies
 
-`npm install`
+    `npm install`
 
 3. Build release or development version
-    * Release
-    `gulp default`
+    **Release**
+        `gulp default`
 
-    * development
-    `gulp dev`
+    **Development**
+        `gulp dev`
 
 4. Run the Docs
 
