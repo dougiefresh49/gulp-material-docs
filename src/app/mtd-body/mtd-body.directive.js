@@ -61,7 +61,23 @@
 
         /* Attributes */
         vm.title = 'BodyController';
+
+        /**
+         * @ngdoc property
+         * @name sections
+         * @propertyOf docsApp.body.controller:BodyController
+         * @description
+         * object used to house all section objects
+         */
         vm.sections = {};
+
+        /**
+         * @ngdoc property
+         * @name currentPage
+         * @propertyOf docsApp.body.controller:BodyController
+         * @description
+         * used to keep track of the current page
+         */
         vm.currentPage = {};
 
         /* Functions */
@@ -74,11 +90,33 @@
 
         ////////////////
 
+        /**
+         * @ngdoc method
+         * @name activate
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * The activate method that will use the {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
+         * to create the sections object once on the first page load.
+         *
+         * After sections are created, it set a private flag to announce that isActivated = true.
+         *
+         */
         function activate() {
             vm.sections = mtdNavSectionService.createSections();
             isActivated = true;
         }
 
+        /**
+         * @ngdoc method
+         * @name updateActivePage
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * On $location change, the active section is saved and the {@link docsApp.body.controller:BodyController#currentPage currentPage} is updated based on the
+         * new path in the url.
+         *
+         * Upon landing, it will pre-open the necessary left nav sections based on the url.
+         *
+         */
         function updateActivePage() {
             if(!isActivated) {
                 return;
@@ -104,6 +142,16 @@
 
         }
 
+        /**
+         * @ngdoc method
+         * @name watchPath
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * Used by the $watch function and returns the $location.path() url string.  Upon change, it will trigger
+         * {@link docsApp.body.controller:BodyController#updateActivePage updateActivePage}
+         *
+         * @returns {string} $location.path() string is returned
+         */
         function watchPath() {
             return $location.path();
         }
