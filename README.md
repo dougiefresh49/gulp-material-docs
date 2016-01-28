@@ -83,6 +83,7 @@ gulp.task('docs:inject', ['docs:make'], function() {
     `npm install`
 
 3. Build release or development version
+
     **Release**
         `gulp default`
 
