@@ -22,7 +22,7 @@ entirely rebuilt internals for optimized performance. See below for features sup
 ## Usage
 With two simple gulp tasks, you will have your beautiful docs ready to go
 
-1. Setup at the top of the gulpfile
+* Setup at the top of the gulpfile
 
 ```js
 var gulp = require('gulp'),
@@ -30,7 +30,7 @@ var gulp = require('gulp'),
     inject = require('gulp-inject');
 ```
 
-2. The main task that makes the documents
+* The main task that makes the documents
 
 ```js
 gulp.task('docs:make', function() {
@@ -60,7 +60,7 @@ gulp.task('docs:make', function() {
 });
 ```
 
-3. The inject task, which will inject the dependency files into the generated docs/index.html file
+* The inject task, which will inject the dependency files into the generated docs/index.html file
 
 ```js
 gulp.task('docs:inject', ['docs:make'], function() {
