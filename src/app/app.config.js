@@ -1,6 +1,6 @@
 /** --------------------------------
  * app.config.js
- * Created by a543119 on 1/25/16.
+ * Created by dougiefresh49 on 1/25/16.
  * ---------------------------------
  */
 (function () {

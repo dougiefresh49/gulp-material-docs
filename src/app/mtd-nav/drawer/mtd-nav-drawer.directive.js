@@ -1,6 +1,6 @@
 /** --------------------------------
  * mtd-nav-drawer.directive.js
- * Created by a543119 on 1/13/16.
+ * Created by dougiefresh49 on 1/13/16.
  * ---------------------------------
  */
 (function () {

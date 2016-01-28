@@ -1,6 +1,6 @@
 /** --------------------------------
  * mtd-chapter.service.js
- * Created by a543119 on 1/14/16.
+ * Created by dougiefresh49 on 1/14/16.
  * ---------------------------------
  */
 (function () {
