@@ -73,3 +73,23 @@ gulp.task('docs:inject', ['docs:make'], function() {
         .pipe(gulp.dest('docs/'));
 });
 ```
+## Building Material Docs Locally
+1. Clone the repository from [GitHub](https://github.com/dougiefresh49/gulp-material-docs)
+
+`git clone https://github.com/dougiefresh49/gulp-material-docs.git`
+
+2. Install the dependencies
+
+`npm install`
+
+3. Build release or development version
+    * Release
+    `gulp default`
+
+    * development
+    `gulp dev`
+
+4. Run the Docs
+
+    Open `docs/index.html` with a localhost server
+    *Note:* local gulp serve task will be added in the future for easier development
