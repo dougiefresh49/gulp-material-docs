@@ -181,7 +181,7 @@ function getDocsSections() {
             title: 'Docs Viewer'
         },
         setup: {
-            glob: 'gulp-usage.ngdoc',
+            glob: 'gulp-setup.ngdoc',
             title: 'Setup'
         }
     };
