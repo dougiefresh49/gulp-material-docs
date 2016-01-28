@@ -21,7 +21,7 @@ gulp.task('dev', function(callback) {
     runSequence(
         'clean',
         'build',
-        'docs:make',
+        'docs:make::dev',
         'docs:inject::dev',
         callback);
 });
@@ -37,24 +37,8 @@ gulp.task('docs', function(callback) {
 });
 
 gulp.task('docs:make', function() {
-    var sections = {
-        viewer: {
-            glob: config.allJs,
-            title: 'Docs Viewer'
-        },
-        setup: {
-            glob: 'gulp-usage.ngdoc',
-            title: 'Setup'
-        }
-    };
-
-    var options = {
-        html5Mode: false,
-        title: "Gulp Material Docs",
-        startPage: '/viewer',
-        imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
-        titleLink: "/viewer"
-    };
+    var sections = getDocsSections();
+    var options = getDocsOptions();
 
     return materialDocs
         .sections(sections)
@@ -68,8 +52,24 @@ gulp.task('docs:inject', function() {
     return gulp
         .src('docs/index.html')
         .pipe(plugins.inject(toInject, {ignorePath: 'docs', addRootSlash: false}))
-        .pipe(gulp.dest('docs/'));
+        .pipe(gulp.dest(config.folders.docs));
 });
+
+gulp.task('docs:make::dev', function() {
+    var sections = getDocsSections();
+    var options = getDocsOptions();
+
+    // Dev only options
+    options.title = "Gulp Material Docs::Dev";
+    options.scripts = [ 'dist/material-docs.js' ];
+    options.styles = [ 'dist/material-docs.css' ];
+
+    return materialDocs
+        .sections(sections)
+        .pipe(materialDocs.make(options))
+        .pipe(gulp.dest(config.folders.docs));
+});
+
 
 gulp.task('docs:inject::dev', function() {
     var toInject = gulp.src(config.toInject.dev, { read: false });
@@ -172,4 +172,28 @@ function getScriptHeader() {
     '  https://github.com/dougiefresh49/gulp-material-docs \n' +
     '  License: MIT \n' +
     '*/ \n'
+}
+
+function getDocsSections() {
+    return {
+        viewer: {
+            glob: config.allJs,
+            title: 'Docs Viewer'
+        },
+        setup: {
+            glob: 'gulp-usage.ngdoc',
+            title: 'Setup'
+        }
+    };
+
+}
+
+function getDocsOptions() {
+    return {
+        html5Mode: false,
+        title: "Gulp Material Docs",
+        startPage: '/viewer',
+        imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
+        titleLink: "/viewer"
+    };
 }

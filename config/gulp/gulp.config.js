@@ -30,11 +30,11 @@ module.exports = function() {
                 'docs/js/docs-setup.js',
                 'docs/js/angular.min.js',
                 'docs/js/angular-animate.min.js',
-                'docs/**/*material-docs.*',
-                '!docs/**/*material-docs.min.*',
+                'docs/**/*material-docs.js',
                 'docs/css/docs.css',
                 'docs/css/animations.css',
-                'docs/css/prettify.css'
+                'docs/css/prettify.css',
+                'docs/**/*material-docs.css'
             ],
             docs: [
                 'docs/js/docs-setup.js',
