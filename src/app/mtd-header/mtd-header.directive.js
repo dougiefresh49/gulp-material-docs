@@ -59,9 +59,27 @@
 
         /* Attributes */
         vm.title = 'HeaderController';
+        
+        /**
+         * @ngdoc property
+         * @name headerTitle
+         * @propertyOf docsApp.header.controller:HeaderController
+         * @description
+         * Header title read from the NG_DOCS options properties
+         */
         vm.headerTitle = NG_DOCS.__options.title || 'Material Docs';
 
         /* Functions */
+        /**
+         * @ngdoc method
+         * @name isActiveSection
+         * @methodOf docsApp.header.controller:HeaderController
+         * @description
+         * Pointer to {@link docsApp.nav.service:mtdNavSectionService#methods_isActiveSection}
+         *
+         * @param {string} sectionUrl     the section url string
+         * @returns {bool} returns if the section url is currently active
+         */
         vm.isActiveSection = mtdNavSectionService.isActiveSection;
 
         ////////////////
