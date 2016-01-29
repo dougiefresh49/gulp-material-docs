@@ -58,7 +58,7 @@
 
         /* --- Helper Functions --- */
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name updateTitles
          * @methodOf docsApp.chapter.service:mtdChapterService
          * @description
@@ -79,7 +79,7 @@
         }
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name updateTitle
          * @methodOf docsApp.chapter.service:mtdChapterService
          * @description
@@ -94,7 +94,7 @@
         }
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name updateSubtitle
          * @methodOf docsApp.chapter.service:mtdChapterService
          * @description
@@ -110,6 +110,5 @@
         }
 
     }
-
 
 })();

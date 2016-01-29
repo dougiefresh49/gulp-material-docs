@@ -59,7 +59,7 @@
         
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name getUpdatedListHtml
          * @methodOf docsApp.chapter.service:mtdChapterDependencyService
          * @description
@@ -102,7 +102,7 @@
         }
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name getUpdatedAnchor
          * @methodOf docsApp.chapter.service:mtdChapterDependencyService
          * @description

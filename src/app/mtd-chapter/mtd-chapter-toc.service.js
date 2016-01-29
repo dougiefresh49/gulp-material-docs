@@ -58,7 +58,7 @@
         /* --- Helper Functions --- */
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name createTableOfContents
          * @methodOf docsApp.chapter.service:mtdChapterTocService
          * @description
@@ -79,7 +79,7 @@
         }
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name createSections
          * @methodOf docsApp.chapter.service:mtdChapterTocService
          * @description
