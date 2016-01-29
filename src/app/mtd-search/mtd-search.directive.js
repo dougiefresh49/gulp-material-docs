@@ -130,6 +130,12 @@
 
                     if(angular.isDefined(page)) {
                         page.rank = match.rank;
+
+                        // Update containing module's rank
+                        if(vm.sections[sectionID].pages[page.moduleName].rank === 0 && page.rank > 0) {
+                            vm.sections[sectionID].pages[page.moduleName].rank = 1;
+                        }
+
                     }
                 });
             });
