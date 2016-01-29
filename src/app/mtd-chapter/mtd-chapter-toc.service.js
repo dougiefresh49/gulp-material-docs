@@ -89,37 +89,28 @@
          * @returns {Array} list of section titles
          */
         function createSections(chapterHtml) {
-            var sectionIdxs = [];
             var sections = [];
-            var h2Index, i;
+            var h2StartIdx, h2EndIdx, h2Start = '<h2', h2End = '</h2>', substring;
 
-            // find all h2 occurrences and save if not -1
-            for(i = 0; i < chapterHtml.length; i++) {
-                h2Index = chapterHtml.indexOf('h2', i);
+            // find all pairs of h2 tags
+            for(var i = 0; i < chapterHtml.length; i++) {
+                h2StartIdx = chapterHtml.indexOf(h2Start, i);
 
-                if(h2Index > -1) {
-                    i = h2Index;
-                    sectionIdxs.push(h2Index);
+                if(h2StartIdx > -1) {
+                    h2EndIdx = chapterHtml.indexOf(h2End, h2StartIdx);
+
+                    if(h2EndIdx > -1) {
+                        i = h2EndIdx + h2End.length;
+
+                        // Save each section text and id
+                        substring = chapterHtml.substring(h2StartIdx, h2EndIdx + h2End.length);
+                        sections.push({
+                            text: extractText(substring, '>', 0, '</'),
+                            id: extractText(substring, '"', substring.indexOf('id='), '"')
+                        });
+                    }
                 }
             }
-
-            // extract content between h2's
-            if(sectionIdxs.length % 2 === 0) {
-                var substring;
-
-                for(i = 0; i < sectionIdxs.length; i+=2) {
-                    // get text between h2s, then make section objects (name and id)
-                    substring = chapterHtml.substring(sectionIdxs[i], sectionIdxs[i+1]);
-                    var section = {
-                        text: extractText(substring, '>', 0, '</'),
-                        id: extractText(substring, '"', substring.indexOf('id='), '"')
-                    };
-
-                    // Don't show description section in toc
-                    sections.push(section);
-                }
-            }
-
 
             return sections;
         }
