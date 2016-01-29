@@ -59,8 +59,35 @@
 
         /* Attributes */
         vm.title = 'SearchController';
+
+        /**
+         * @ngdoc property
+         * @name bestMatch
+         * @propertyOf docsApp.search.controller:SearchController
+         * @type {object}
+         * @description
+         * object containing the page with the best match with the search terms
+         */
         vm.bestMatch = {page: null, rank:0};
+
+        /**
+         * @ngdoc property
+         * @name search
+         * @propertyOf docsApp.search.controller:SearchController
+         * @type {string}
+         * @description
+         * string that stores the search terms
+         */
         vm.search = '';
+
+        /**
+         * @ngdoc property
+         * @name searchingChanged
+         * @propertyOf docsApp.search.controller:SearchController
+         * @type {bool}
+         * @description
+         * flag to notify when user is searching
+         */
         vm.searchingChanged = false;
 
         /* Functions */
@@ -69,6 +96,17 @@
 
         ////////////////
 
+        /**
+         * @ngdoc method
+         * @name updateSearch
+         * @methodOf docsApp.search.controller:SearchController
+         * @description
+         * Will be called every time text is updated in the search box.
+         * It updates the {@link docsApp.search.controller:SearchController#properties_bestMatch bestMatch}, applies a rank to each page in the section,
+         * and sets the searching status with
+         * {@link docsApp.search.service:mtdSearchService#methods_setIsSearching setIsSearching}
+         *
+         */
         function updateSearch() {
             vm.bestMatch = {page: null, rank:0};
             var sectionID = $location.path().split('/')[1];
@@ -99,6 +137,14 @@
             mtdSearchService.setIsSearching(true);
         }
 
+        /**
+         * @ngdoc method
+         * @name submitSearch
+         * @methodOf docsApp.search.controller:SearchController
+         * @description
+         * On submission of the search form, the page with the best match is navigated to.
+         *
+         */
         function submitSearch() {
             if(vm.bestMatch && vm.bestMatch.page && vm.search !== '') {
                 var url = vm.bestMatch.page.url;
@@ -114,6 +160,16 @@
 
         /* --- Helper Functions --- */
 
+        /**
+         * @ngdoc function
+         * @name getAllPages
+         * @methodOf docsApp.search.controller:SearchController
+         * @description
+         * Helper function used to get all of the pages associated with a single module from its nested objects
+         *
+         * @param {object} module     single module object from the list module objects
+         * @returns {Array} list of pages
+         */
         function getAllPages(module) {
             return [module.pageData]
                 .concat(module.controllers)
@@ -125,6 +181,16 @@
                 .concat(module.types);
         }
 
+        /**
+         * @ngdoc function
+         * @name getServicesFromModule
+         * @methodOf docsApp.search.controller:SearchController
+         * @description
+         * Helper function to get all service and provider pages in the module.services object
+         *
+         * @param {object} module     single module object from the list module objects
+         * @returns {Array} list of pages
+         */
         function getServicesFromModule(module) {
             return module.services.map(function (service) {
                 if(angular.isDefined(service.instance)) {

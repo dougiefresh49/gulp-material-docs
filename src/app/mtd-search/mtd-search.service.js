@@ -37,18 +37,58 @@
 
         ////////////////
 
+        /**
+         * @ngdoc method
+         * @name isMatchedPage
+         * @methodOf docsApp.search.service:mtdSearchService
+         * @description
+         * Checks to see if the provided page rank is grater than 0 and the user is searching
+         *
+         * @param {int} pageRank     rank of a page
+         * @returns {bool} true if is searching and pageRank > 0
+         */
         function isMatchedPage(pageRank) {
             return (isSearching) ? pageRank > 0 : true;
         }
 
+        /**
+         * @ngdoc method
+         * @name getIsSearching
+         * @methodOf docsApp.search.service:mtdSearchService
+         * @description
+         * Getter for the private isSearching property
+         *
+         * @returns {bool} isSearching private property
+         */
         function getIsSearching() {
             return isSearching;
         }
 
+        /**
+         * @ngdoc method
+         * @name setIsSearching
+         * @methodOf docsApp.search.service:mtdSearchService
+         * @description
+         * Setter for the private isSearching property
+         *
+         * @param {bool} isSearchingActive     boolean to set the private isSearching property to
+         */
         function setIsSearching(isSearchingActive) {
             isSearching = isSearchingActive
         }
 
+        /**
+         * @ngdoc method
+         * @name rank
+         * @methodOf docsApp.search.service:mtdSearchService
+         * @description
+         * Responsible for applying a rank to each page.
+         * It uses {@link docsApp.search.service:mtdSearchService#methods_getRankingPoints getRankingPoints} to collect
+         * the total ranking points
+         *
+         * @param {object} page     page object
+         * @param {string} terms    string of search terms to rank the page on, taken from search field
+         */
         function rank(page, terms) {
             var ranking = { page: page, rank: 0};
 
@@ -67,6 +107,19 @@
             return ranking;
         }
 
+        /* --- Helper Functions --- */
+
+        /**
+         * @ngdoc function
+         * @name getRankingPoints
+         * @methodOf docsApp.search.service:mtdSearchService
+         * @description
+         * Helper function to get the ranking points when comparing the search term with the a specific page
+         *
+         * @param {object} page     page object
+         * @param {string} term    single term from the set of terms input in search field
+         * @returns {int} the calculated rank
+         */
         function getRankingPoints(page, term) {
             var rank = 0,
                 index = page.shortName.toLowerCase().indexOf(term);
@@ -84,6 +137,5 @@
         }
 
     }
-
 
 })();
