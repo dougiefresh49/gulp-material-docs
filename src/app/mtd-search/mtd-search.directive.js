@@ -120,24 +120,22 @@
                 return;
             }
 
-            angular.forEach(vm.sections[sectionID].modules, function (module, moduleId) {
-                var pages = getAllPages(module);
-                pages.forEach(function (page) {
-                    var match = mtdSearchService.rank(page, vm.search);
-                    if(match.rank > vm.bestMatch.rank) {
-                        vm.bestMatch = match;
+            // Apply rank to each page in the given section
+            angular.forEach(vm.sections[sectionID].pages, function (page, pageId) {
+                var match = mtdSearchService.rank(page, vm.search);
+                if(match.rank > vm.bestMatch.rank) {
+                    vm.bestMatch = match;
+                }
+
+                if(angular.isDefined(page)) {
+                    page.rank = match.rank;
+
+                    // Update containing module's rank
+                    if(vm.sections[sectionID].pages[page.moduleName].rank === 0 && page.rank > 0) {
+                        vm.sections[sectionID].pages[page.moduleName].rank = 1;
                     }
 
-                    if(angular.isDefined(page)) {
-                        page.rank = match.rank;
-
-                        // Update containing module's rank
-                        if(vm.sections[sectionID].pages[page.moduleName].rank === 0 && page.rank > 0) {
-                            vm.sections[sectionID].pages[page.moduleName].rank = 1;
-                        }
-
-                    }
-                });
+                }
             });
 
             mtdSearchService.setIsSearching(true);
@@ -164,49 +162,6 @@
             }
         }
 
-        /* --- Helper Functions --- */
-
-        /**
-         * @ngdoc function
-         * @name getAllPages
-         * @methodOf docsApp.search.controller:SearchController
-         * @description
-         * Helper function used to get all of the pages associated with a single module from its nested objects
-         *
-         * @param {object} module     single module object from the list module objects
-         * @returns {Array} list of pages
-         */
-        function getAllPages(module) {
-            return [module.pageData]
-                .concat(module.controllers)
-                .concat(module.directives)
-                .concat(module.filters)
-                .concat(module.globals)
-                .concat(module.others)
-                .concat(getServicesFromModule(module))
-                .concat(module.types);
-        }
-
-        /**
-         * @ngdoc function
-         * @name getServicesFromModule
-         * @methodOf docsApp.search.controller:SearchController
-         * @description
-         * Helper function to get all service and provider pages in the module.services object
-         *
-         * @param {object} module     single module object from the list module objects
-         * @returns {Array} list of pages
-         */
-        function getServicesFromModule(module) {
-            return module.services.map(function (service) {
-                if(angular.isDefined(service.instance)) {
-                    return service.instance
-                }
-                if(angular.isDefined(service.provider)) {
-                    return service.provider
-                }
-            })
-        }
     }
 
 })();
