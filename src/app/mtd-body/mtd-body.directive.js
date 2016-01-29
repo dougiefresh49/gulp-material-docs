@@ -111,7 +111,7 @@
          * @name updateActivePage
          * @methodOf docsApp.body.controller:BodyController
          * @description
-         * On $location change, the active section is saved and the {@link docsApp.body.controller:BodyController#currentPage currentPage} is updated based on the
+         * On $location change, the active section is saved and the {@link docsApp.body.controller:BodyController#properties_currentPage currentPage} is updated based on the
          * new path in the url.
          *
          * Upon landing, it will pre-open the necessary left nav sections based on the url.
@@ -148,7 +148,7 @@
          * @methodOf docsApp.body.controller:BodyController
          * @description
          * Used by the $watch function and returns the $location.path() url string.  Upon change, it will trigger
-         * {@link docsApp.body.controller:BodyController#updateActivePage updateActivePage}
+         * {@link docsApp.body.controller:BodyController#methods_updateActivePage updateActivePage}
          *
          * @returns {string} $location.path() string is returned
          */
