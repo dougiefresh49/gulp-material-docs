@@ -13,9 +13,8 @@
      * @description
      * A service for updating the names of dependencies in each chapter
      *
+     * @requires docsApp.nav.service:mtdNaveModulesService
      */
-
-        // TODO: add documentation for requiring mtdNaveModulesService
 
     angular
         .module('docsApp.chapter')
@@ -33,6 +32,16 @@
 
         ////////////////
 
+        
+        /**
+         * @ngdoc method
+         * @name updateAnchors
+         * @methodOf docsApp.chapter.service:mtdChapterDependencyService
+         * @description
+         * Main coordinating function for updating the anchor tags of the dependency sections of each chapter.
+         *
+         * @param {object} sections     object passed from the {@link docsApp.chapter.service:mtdChapterService#methods_updateChapter updateChapter}
+         */
         function updateAnchors(sections) {
             var listHtml = angular.element( document.querySelector('#chapterBody ul.dependencies')).html();
 
@@ -45,7 +54,22 @@
             angular.element( document.querySelector('#chapterBody ul.dependencies')).html(listHtml);
 
         }
+        
+        /* --- Helper Functions --- */
+        
 
+        /**
+         * @ngdoc method
+         * @name getUpdatedListHtml
+         * @methodOf docsApp.chapter.service:mtdChapterDependencyService
+         * @description
+         * Helper function that gets the updated list of dependency anchor tags with proper names
+         *
+         * @private
+         * @param {string} listHtml     string of html from the dom
+         * @param {object} sections  object passed from the {@link docsApp.chapter.service:mtdChapterDependencyService#methods_getUpdatedListHtml updateAnchors}
+         * @returns {string} string of the updated dependency list html
+         */
         function getUpdatedListHtml(listHtml, sections) {
             var anchorStartIdx = 0,
                 anchorEndIdx = 0,
@@ -77,6 +101,17 @@
             return listHtml;
         }
 
+        /**
+         * @ngdoc method
+         * @name getUpdatedAnchor
+         * @methodOf docsApp.chapter.service:mtdChapterDependencyService
+         * @description
+         * Helper function used to update individual anchor tag names in the dependency list
+         *
+         * @param {object} sections  object passed from the {@link docsApp.chapter.service:mtdChapterDependencyService#methods_getUpdatedListHtml getUpdatedListHtml}
+         * @param {string} anchorHtml string of html ex: '<a href="/some/ur/">moduleName</a>'
+         * @returns {string} updated anchorHtml with proper module.name
+         */
         function getUpdatedAnchor(sections, anchorHtml) {
             var hrefStart = anchorHtml.indexOf('href="') + 6,
                 hrefEnd = anchorHtml.indexOf('"', hrefStart);
@@ -97,12 +132,7 @@
             }
 
             return anchorHtml;
-
         }
-
-
-
     }
-
 
 })();
