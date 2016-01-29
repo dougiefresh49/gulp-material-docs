@@ -50,7 +50,6 @@
      * @requires docsApp.search.service:mtdSearchService
      */
 
-
     NavListController.$inject = ['mtdSearchService'];
 
     /* @ngInject */

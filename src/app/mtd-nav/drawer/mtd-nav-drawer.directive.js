@@ -75,6 +75,14 @@
 
         ////////////////
 
+        /**
+         * @ngdoc method
+         * @name activate
+         * @methodOf docsApp.nav.controller:NavDrawerController
+         * @description
+         * Activation function that sets properties need in the dom from the NG_DOCS.__options object
+         *
+         */
         function activate() {
             vm.companyName = NG_DOCS.__options.legal.companyName;
             vm.privacyLink = NG_DOCS.__options.legal.privacyLink;
@@ -83,10 +91,29 @@
             vm.image = NG_DOCS.__options.image;
         }
 
+        /**
+         * @ngdoc method
+         * @name canShowLink
+         * @methodOf docsApp.nav.controller:NavDrawerController
+         * @description
+         * Determines if a link can be displayed
+         *
+         * @param {string} attr     string attribute of vm
+         * @returns {bool} returns if the link can be shown or not
+         */
         function canShowLink(attr) {
             return angular.isDefined(attr) && attr !== '';
         }
 
+        /**
+         * @ngdoc method
+         * @name toggleSection
+         * @methodOf docsApp.nav.controller:NavDrawerController
+         * @description
+         * Toggles a section's subSections once clicked
+         *
+         * @param {object} section     single section object inside sections property
+         */
         function toggleSection(section) {
             if(angular.isDefined(section)) {
                 section.showSubSections = !section.showSubSections;

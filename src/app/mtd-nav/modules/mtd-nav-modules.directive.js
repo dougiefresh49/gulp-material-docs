@@ -62,6 +62,8 @@
 
         /* Attributes */
         vm.title = 'NavModulesController';
+
+        // TODO: add docs for property
         vm.activeLink = $location.path().substr(1) || "";
 
         /* Functions */
@@ -69,11 +71,40 @@
         vm.isMatchedPage = mtdSearchService.isMatchedPage;
 
         /* Watchers */
+        /**
+         * @ngdoc method
+         * @name $watch
+         * @methodOf docsApp.nav.controller:NavModulesController
+         * @description
+         * $watcher function that watches the $location change returned in
+         * {@link ddocsApp.nav.controller:NavModulesController#methods_watchPath watchPath}
+         * and then {@link docsApp.nav.controller:NavModulesController#methods_updateModules updateModules}
+         *
+         */
         $scope.$watch(watchPath, updateModules);
+
+        /**
+         * @ngdoc method
+         * @name $watchSearch
+         * @methodOf docsApp.nav.controller:NavModulesController
+         * @description
+         * $watcher function that watches the isSearching parameter
+         * and then {@link docsApp.nav.controller:NavModulesController#methods_updateModules updateModules}
+         *
+         */
         $scope.$watch(mtdSearchService.isSearching , updateModules);
 
         ////////////////
 
+        /**
+         * @ngdoc method
+         * @name toggleModule
+         * @methodOf docsApp.nav.controller:NavModulesController
+         * @description
+         * Toggles a module's content in the side nav if it is defined
+         *
+         * @param {object} [_module]     single module object from list of modules parameter in the {@link docsApp.nav.directive:mtdNavModules mtdNavModules directive}
+         */
         function toggleModule(_module) {
             if(angular.isDefined(_module)) {
                  //Toggle module content visibility var
@@ -96,6 +127,15 @@
 
         /* --- Helper Functions --- */
 
+        /**
+         * @ngdoc function
+         * @name updateModules
+         * @methodOf docsApp.nav.controller:NavModulesController
+         * @description
+         * Will set the {@link / activeLink} based on the location and toggle the Module's content via
+         * {@link docsApp.nav.controller:NavModulesController#methods_updateModules updateModules}
+         *
+         */
         function updateModules() {
             // Set current active link (saves on lookup time)
             vm.activeLink = $location.$$html5 ? $location.path().substr(1) : '#/' + $location.path().substr(1);
@@ -106,6 +146,15 @@
             }
         }
 
+        /**
+         * @ngdoc function
+         * @name watchPath
+         * @methodOf docsApp.nav.controller:NavModulesController
+         * @description
+         * Used by the $watch function and returns the $location.path() url string.
+         *
+         * @returns {string} $location.path() string is returned
+         */
         function watchPath() {
             return $location.path();
         }

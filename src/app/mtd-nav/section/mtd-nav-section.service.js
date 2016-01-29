@@ -15,7 +15,6 @@
      *
      * @requires docsApp.nav.service:mtdNaveModulesService
      */
-
     angular
         .module('docsApp.nav')
         .factory('mtdNavSectionService', mtdNavSectionService);
@@ -39,10 +38,30 @@
 
         ////////////////
 
+        /**
+         * @ngdoc method
+         * @name canShowSubSections
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * checks if a section's subSections can be shown
+         *
+         * @param {object} section     section object
+         * @returns {bool} returns true or false
+         */
         function canShowSubSections(section) {
             return isActiveSection(section.url) && (angular.isUndefined(section.showSubSections) ||  section.showSubSections);
         }
 
+        /**
+         * @ngdoc method
+         * @name createSections
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Creates an object of section objects.  This approach allows for direct lookup and no loops to find desired
+         * sections.
+         *
+         * @returns {object} object of section objects
+         */
         function createSections() {
             var sections = {};
             var cachedSections = getCachedSections();
@@ -64,14 +83,43 @@
             return sections;
         }
 
+        /**
+         * @ngdoc method
+         * @name isActiveSection
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Checks if a given sectionUrl is currently active or not
+         *
+         * @param {string} sectionUrl     the url of a section
+         * @returns {bool} true or false
+         */
         function isActiveSection(sectionUrl) {
             return activeSection === sectionUrl.replace('#/', '');
         }
 
+        /**
+         * @ngdoc method
+         * @name setActiveSection
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Set the active section private property
+         *
+         * @param {string} _activeSection     the new active section url string
+         */
         function setActiveSection(_activeSection) {
             activeSection = _activeSection;
         }
 
+        /**
+         * @ngdoc method
+         * @name openSubSection
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Open the subSection of a given section if that section has a page with the supplied pageId
+         *
+         * @param {object} section    section object
+         * @param {string} pageId     string id of the current page
+         */
         function openSubSection(section, pageId) {
             if(angular.isDefined(pageId) && angular.isDefined(section.pages[pageId])) {
                 var moduleName = section.pages[pageId].moduleName;
@@ -80,6 +128,17 @@
         }
 
         /* --- Helper Functions --- */
+        
+        /**
+         * @ngdoc function
+         * @name getCachedSections
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Helper function used by {@link docsApp.nav.service:mtdNavSectionService#methods_createSections createSections}
+         * to save the pages for each section
+         *
+         * @returns {object}    object of sections with object of pages attached to each section
+         */
         function getCachedSections() {
             var cachedSections = {};
 
