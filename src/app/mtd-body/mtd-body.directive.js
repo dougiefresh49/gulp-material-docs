@@ -76,7 +76,7 @@
          * @name currentPage
          * @propertyOf docsApp.body.controller:BodyController
          * @description
-         * used to keep track of the current page
+         * object used to keep track of the current page
          */
         vm.currentPage = {};
 
@@ -84,6 +84,16 @@
         vm.activate = activate;
 
         /* Watchers */
+        /**
+         * @ngdoc method
+         * @name $watch
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * $watcher function that watches the $location change returned in
+         * {@link docsApp.body.controller:BodyController#methods_watchPath watchPath}
+         * and then {@link docsApp.body.controller:BodyController#methods_updateActivePage updateActivePage}
+         *
+         */
         $scope.$watch(watchPath, updateActivePage);
 
         activate();
@@ -107,7 +117,7 @@
         }
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name updateActivePage
          * @methodOf docsApp.body.controller:BodyController
          * @description
@@ -143,12 +153,11 @@
         }
 
         /**
-         * @ngdoc method
+         * @ngdoc function
          * @name watchPath
          * @methodOf docsApp.body.controller:BodyController
          * @description
-         * Used by the $watch function and returns the $location.path() url string.  Upon change, it will trigger
-         * {@link docsApp.body.controller:BodyController#methods_updateActivePage updateActivePage}
+         * Used by the $watch function and returns the $location.path() url string.
          *
          * @returns {string} $location.path() string is returned
          */
