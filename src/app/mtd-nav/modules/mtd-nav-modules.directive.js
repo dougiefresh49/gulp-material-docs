@@ -63,7 +63,13 @@
         /* Attributes */
         vm.title = 'NavModulesController';
 
-        // TODO: add docs for property
+        /**
+         * @ngdoc property
+         * @name activeLink
+         * @propertyOf docsApp.nav.controller:NavModulesController
+         * @description
+         * String to keep track of the active link. Saves on performance by allowing for direct lookup
+         */
         vm.activeLink = $location.path().substr(1) || "";
 
         /* Functions */
@@ -132,7 +138,8 @@
          * @name updateModules
          * @methodOf docsApp.nav.controller:NavModulesController
          * @description
-         * Will set the {@link / activeLink} based on the location and toggle the Module's content via
+         * Will set the {@link docsApp.nav.controller:NavModulesController#properties_activeLink activeLink}
+         * based on the location and toggle the Module's content via
          * {@link docsApp.nav.controller:NavModulesController#methods_updateModules updateModules}
          *
          */
