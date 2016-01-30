@@ -73,6 +73,10 @@ gulp.task('docs:inject', ['docs:make'], function() {
         .pipe(gulp.dest('docs/'));
 });
 ```
+## Demo
+A full working demo will be available soon. For now, please follow the steps for
+[Building Material Docs Locally](## Building Material Docs Locally).
+
 ## Building Material Docs Locally
 1. Clone the repository from [GitHub](https://github.com/dougiefresh49/gulp-material-docs)
 
