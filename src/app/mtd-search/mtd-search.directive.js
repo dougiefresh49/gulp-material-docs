@@ -152,6 +152,10 @@
         function submitSearch() {
             if(vm.bestMatch && vm.bestMatch.page && vm.search !== '') {
                 var url = vm.bestMatch.page.url;
+
+                // show the contents of the best matched page's module
+                vm.sections[vm.bestMatch.page.section].modules[vm.bestMatch.page.moduleName].showContents = true;
+
                 mtdSearchService.setIsSearching(true);
                 $location.path( $location.$$html5 ? url : url.substring(1) );
             }
