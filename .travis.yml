@@ -12,10 +12,11 @@ before_install:
 before_script:
   - npm prune
 scripts:
+  - gulp
   - npm test
-#  - npm run check-coverage
+  - npm run check-coverage
 after_success:
-#  - npm run report-coverage
+  - npm run report-coverage
   - npm run semantic-release
 branches:
   only:

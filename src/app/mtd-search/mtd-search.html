@@ -1,0 +1,17 @@
+<form ng-submit="vm.submitSearch()">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                                mdl-textfield--floating-label mdl-textfield--align-right">
+
+        <!-- Search Icon -->
+        <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--search" for="waterfall-search">
+            <i class="material-icons">search</i>
+        </label>
+
+        <!-- Search Field -->
+        <div class="mdl-textfield__expandable-holder">
+            <input id="waterfall-search" class="mdl-textfield__input"
+                   ng-change="vm.updateSearch()"
+                   type="text" name="search" accesskey="s" ng-model="vm.search">
+        </div>
+    </div>
+</form>

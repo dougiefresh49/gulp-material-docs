@@ -1,0 +1,21 @@
+<main class="mdl-layout__content mdl-color--grey-50">
+    <div class="mdl-grid mdl-chapter">
+
+        <div class="mdl-cell mdl-cell--2-col"></div>
+
+        <div class="mdl-cell mdl-cell--8-col">
+            <div id="loading" ng-show="loading">Loading...</div>
+
+            <div id="chapterBody"
+                 ng-hide="loading"
+                 ng-include src="vm.currentPage.partialUrl"
+                 onload="vm.onPartialLoad()"
+                 autoscroll
+                 class="content slide-reveal">
+            </div>
+        </div>
+
+        <div class="mdl-cell mdl-cell--2-col"></div>
+
+    </div>
+</main>

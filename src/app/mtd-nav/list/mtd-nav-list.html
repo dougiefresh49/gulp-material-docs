@@ -1,0 +1,8 @@
+<div ng-repeat="page in vm.objectList track by page.url">
+    <a class="mdl-navigation__link"
+       ng-class="(vm.activeLink === page.url) ? 'active' : ''"
+       href="{{ page.url }}"
+       ng-if="vm.isMatchedPage(page.rank)">
+        {{ page.shortName }}
+    </a>
+</div>

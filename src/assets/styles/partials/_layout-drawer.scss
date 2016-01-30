@@ -1,0 +1,97 @@
+.mdl-layout__drawer {
+  bottom: 0;
+  overflow-x: hidden !important;
+
+  .mdl-layout__drawer-wrapper {
+    min-height: 90%;
+    padding-bottom: 119px;
+    position: relative;
+  }
+
+  #logo {
+    //todo: add to colors
+    padding-left: 24px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .mdl-legal {
+    //todo: add to colors
+    border-top: 1px solid #e0e0e0;
+    bottom: 0;
+    color: #212121;
+    font-size: 13px;
+    max-height: 119px;
+    line-height: 24px;
+    padding: 24px;
+    position: absolute;
+    width: 100%;
+
+    a, a:hover {
+      text-decoration: none;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .powered-by {
+      font-size: 11px;
+      margin-top: 7px;
+    }
+
+  }
+
+  .mdl-navigation {
+    padding: 12px 0 10px 0 !important;
+
+    .mdl-navigation {
+      padding-top: 0 !important;
+      padding-left: 10px !important;
+    }
+
+    .mdl-navigation_nested {
+      padding-left: 24px;
+    }
+
+    .mdl-navigation__link {
+      //todo: add to colors
+      color: #333333 !important;
+      padding: 15px 0 15px 22px !important;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+
+      &:hover{
+        background-color: transparent !important;
+      }
+
+      &.active {
+        //todo: add to colors
+        color: rgb(76,175,80) !important;
+      }
+
+      &.section-link {
+        font-weight: bolder;
+        font-size: 16px;
+        text-decoration: none;
+
+        &.active--section-link {
+          //todo: add to colors
+          background-color: #e0e0e0;
+
+          &:hover {
+            background-color: #e0e0e0 !important;
+          }
+
+        }
+      }
+
+      &.mdl-bold {
+        font-weight: bold !important;
+      }
+
+    }
+
+
+  }
+
+}

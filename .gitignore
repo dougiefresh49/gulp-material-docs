@@ -1,3 +1,9 @@
 .idea
+.DS_Store
+
 node_modules
 coverage
+
+src/temp
+docs
+dist

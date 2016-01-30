@@ -1,0 +1,52 @@
+<div ng-repeat="(id, module) in vm.modules track by module.url">
+    <!-- Module Name -->
+    <a class="mdl-navigation__link mdl-bold"
+       href="{{ module.url }}"
+       ng-click="vm.toggleModule(module)"
+       ng-if="vm.isMatchedPage(module.pageData.rank)"
+       ng-class="{ 'active' : vm.activeLink === module.url }">
+        {{ module.name }}
+    </a>
+
+    <!-- Module Content -->
+    <div class="mdl-navigation_nested" ng-if="module.showContents">
+
+        <!-- Others List-->
+        <mtd-nav-list object-list="module.others" active-link="vm.activeLink"></mtd-nav-list>
+
+        <!-- Directives List -->
+        <mtd-nav-list object-list="module.directives" active-link="vm.activeLink"></mtd-nav-list>
+
+        <!-- Controller List -->
+        <mtd-nav-list object-list="module.controllers" active-link="vm.activeLink"></mtd-nav-list>
+
+        <!-- Filters List -->
+        <mtd-nav-list object-list="module.filters" active-link="vm.activeLink"></mtd-nav-list>
+
+        <!-- Services -->
+        <div ng-repeat="service in module.services track by service.instance.url">
+            <a class="mdl-navigation__link"
+               ng-class="(vm.activeLink === service.instance.url) ? 'active' : ''"
+               ng-if="vm.isMatchedPage(service.instance.rank)"
+               href="{{ service.instance.url }}">
+                {{service.name}}
+            </a>
+
+            <a ng-show="service.provider"
+               class="mdl-navigation__link"
+               ng-class="(vm.activeLink === service.provider.url) ? 'active' : ''"
+               ng-if="vm.isMatchedPage(service.provider.rank)"
+               href="{{ service.provider.url }}">
+                <i class="material-icons" role="presentation">settings</i>
+            </a>
+        </div>
+
+        <!-- Types List -->
+        <mtd-nav-list object-list="module.types" active-link="vm.activeLink"></mtd-nav-list>
+
+        <!-- Globals List -->
+        <mtd-nav-list object-list="module.globals" active-link="vm.activeLink"></mtd-nav-list>
+
+    </div>
+
+</div>

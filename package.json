@@ -4,9 +4,10 @@
   "description": "A gulp plugin to create Material Design inspired documentation",
   "main": "index.js",
   "scripts": {
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "check-coverage": "istanbul check-coverage --statements 95 --branches 95 --functions 95 --lines 95",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "test": "istanbul cover -x *.spec.js _mocha -- -R spec tests",
+    "test:tdd": "mocha tests -w",
     "commit": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -27,14 +28,33 @@
     "url": "https://github.com/dougiefresh49/gulp-material-docs/issues"
   },
   "homepage": "https://github.com/dougiefresh49/gulp-material-docs#readme",
+  "dependencies" : {
+    "gulp-ngdocs": "git+https://github.com/nikhilmodak/gulp-ngdocs.git"
+  },
   "devDependencies": {
     "chai": "3.4.1",
     "codecov.io": "0.1.6",
     "commitizen": "2.5.0",
     "cz-conventional-changelog": "1.1.5",
+    "del": "^2.2.0",
+    "extend": "^3.0.0",
     "ghooks": "1.0.3",
+    "gulp": "^3.9.0",
+    "gulp-angular-htmlify": "^2.3.0",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-minify-html": "^1.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.1",
     "istanbul": "0.4.2",
     "mocha": "2.3.4",
+    "run-sequence": "^1.1.5",
     "semantic-release": "^4.3.5"
   },
   "config": {
@@ -42,7 +62,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npm test && npm run check-coverage"
     }
   }
 }

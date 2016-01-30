@@ -1,0 +1,87 @@
+
+.mdl-chapter {
+
+  h1 {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+    margin-bottom: 30px;
+    color: rgb(76,175,80);
+
+    .hint {
+      code {
+        //todo: add to colors
+        color: #c0c0c0;
+      }
+    }
+
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    overflow: hidden;
+
+    //todo: add to colors
+    color: rgb(76,175,80);
+
+    padding-top: 60px;
+    border-top: 1px solid rgba(0,0,0,0.12);
+
+    &#description {
+      border-top: none;
+      padding-top: 48px;
+      margin-top: 0;
+    }
+
+  }
+
+  .mdl-toc {
+    //todo: add to colors
+    border-left: 5px solid rgb(76,175,80);
+    padding-left: 20px;
+    margin-bottom: 40px;
+
+    h1 {
+      font-size: 15px;
+      line-height: 16px;
+      padding-bottom: 12px;
+      font-weight: 400;
+      color: #757575;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 0;
+      padding-left: 0;
+    }
+
+    li {
+      font-size: 20px;
+      line-height: 40px;
+
+      &:last-child {
+        line-height: 20px;
+        padding-top: 10px;
+      }
+
+    }
+
+    a {
+      //todo: add to colors
+      text-decoration: none;
+      color: rgb(76,175,80);
+
+      &:hover {
+        text-decoration: none;
+      }
+
+    }
+
+  }
+
+}

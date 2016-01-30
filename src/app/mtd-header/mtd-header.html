@@ -1,0 +1,23 @@
+<header id="waterfallHeader" class="mdl-layout__header mdl-layout--fixed-header mdl-layout__header--waterfall">
+    <!-- Top row, always visible -->
+    <div class="mdl-layout_header--top-section">
+        <div class="mdl-layout__header-row">
+
+            <!-- Title -->
+            <span class="mdl-layout_header--section-title">
+                {{ vm.headerTitle }}
+                <span ng-repeat="section in vm.sections">
+                    <span ng-if="vm.isActiveSection(section.url)" class="mdl-layout_header--section-subtitle">
+                        - {{ section.name }}
+                    </span>
+                </span>
+            </span>
+
+            <div class="mdl-layout-spacer"></div>
+
+            <!-- Search Form -->
+            <mtd-search sections="vm.sections"></mtd-search>
+
+        </div>
+    </div>
+</header>

@@ -1,0 +1,64 @@
+@id Adding to Your Gulpfile
+@ngdoc overview
+@name gulp-usage
+@description
+
+With two simple gulp tasks, you will have your beautiful docs ready to go
+
+## Install gulp-material-docs
+
+`npm install --save-dev gulp-material-docs`
+
+## Setup at the top of the gulpfile
+
+```js
+var gulp = require('gulp'),
+    materialDocs = require('gulp-material-docs'),
+    inject = require('gulp-inject');
+```
+
+## The main task that makes the documents
+
+```js
+gulp.task('docs:make', function() {
+    var sections = {
+        materialDocs: {
+            // Files to load into the defined section
+            glob: [
+                'src/**/*module.js',
+                'src/**/*config.js',
+                'src/**/*.js',
+                '!src/**/*spec.js'
+            ],
+            title: 'Website'
+        }
+    };
+    var options = {
+        html5Mode: false,
+        title: "Gulp Material Docs",
+        startPage: '/materialDocs',
+        imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
+        titleLink: "/materialDocs"
+    };
+    return materialDocs
+        .sections(sections)
+        .pipe(materialDocs.make(options))
+        .pipe(gulp.dest('docs/'));
+});
+```
+
+## The inject task, which will inject the dependency files into the generated docs/index.html file
+
+```js
+gulp.task('docs:inject', ['docs:make'], function() {
+    // get the default list of sources to inject to the docs/index.html file
+    var toInject = gulp.src(materialDocs.srcToInject('docs/'), { read: false });
+
+    return gulp
+        .src('docs/index.html')
+        .pipe(inject(toInject, {ignorePath: 'docs', addRootSlash: false}))
+        .pipe(gulp.dest('docs/'));
+});
+```
+
+
