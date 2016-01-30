@@ -116,15 +116,6 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
   };
   ```
 
-###### [legal.companyName] {string}
-  The company or project name you would like visible on the docs.
-
-###### [legal.privacyLink] {string}
-  The link to your privacy policy.
-
-###### [legal.termsLink] {string}
-  The link to your terms and condition policy.
-
 ###### [favicon] {string}
   The path to your .ico file used for the title icon of the docs site.
   Give the full path from the root of the docs folder.
@@ -142,6 +133,7 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
                 | -- material-docs.ico
 
   ```
+  The favico path would be written as such
 
   ```js
   var faviconPath = 'dist/material-docs.ico'
