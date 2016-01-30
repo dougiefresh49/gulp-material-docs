@@ -17,6 +17,7 @@ A gulp plugin to create Material Design inspired documentation
   1. [Options](#options)
   1. [Demo](#demo)
   1. [Building Material Docs Locally](#building-material-docs-locally)
+  1. [Future Features](#future-features)
 
 ## Why Material Docs?
 `gulp-material-docs` document generator is a beautiful AND easy way to display your docs based on Google's
@@ -92,13 +93,13 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
 ### Currently Unsupported Options
 
 ###### [[analytics](https://github.com/nikhilmodak/gulp-ngdocs#analytics)] {object}
-  Coming soon.
+  - Coming soon.
 
 ###### [[discussions](https://github.com/nikhilmodak/gulp-ngdocs#discussions)]
-  Coming soon.
+  - Coming soon.
 
 ###### [[bestMatch](https://github.com/nikhilmodak/gulp-ngdocs#bestmatch)] {bool}
-  Best match will always occur on submission of search form. Other results will still be visible in the left nav bar.
+  - Best match will always occur on submission of search form. Other results will still be visible in the left nav bar.
 
 ###### [[navTemplate](https://github.com/nikhilmodak/gulp-ngdocs#navtemplate)] {string}
 
@@ -106,7 +107,7 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
 ### Additional Options
 
 ###### [legal] {object}
-  The legal object is a container for links / text in the footer of the left navbar.
+  - The legal object is a container for links / text in the footer of the left navbar.
 
   ```js
   var legal = {
@@ -116,9 +117,9 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
   };
   ```
 
+
 ###### [favicon] {string}
-  The path to your .ico file used for the title icon of the docs site.
-  Give the full path from the root of the docs folder.
+  - The path to your .ico file used for the title icon of the docs site.
 
   Example: Given the folder structure...
   ```js
@@ -171,3 +172,12 @@ A full working demo will be available soon. For now, please follow the steps for
 
     Open `docs/index.html` with a localhost server
     *Note:* local gulp serve task will be added in the future for easier development
+
+
+## Future Features
+  - add mode detailed styling for chapter content and ngdoc files
+  - add ability to provide angular version and change color scheme
+  - add ability for direct source link (docs to code)
+  - add ability to show type for property
+  - functions - public or private support
+
