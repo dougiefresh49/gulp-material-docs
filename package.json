@@ -62,7 +62,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm test && npm run check-coverage"
+      "pre-commit": "npm test && npm run check-coverage && gulp"
     }
   }
 }
