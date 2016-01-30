@@ -82,12 +82,25 @@ gulp.task('docs:inject', ['docs:make'], function() {
         .pipe(gulp.dest('docs/'));
 });
 ```
+
 ## Options
+
 Most options supported by [gulp-ngdocs](https://github.com/nikhilmodak/gulp-ngdocs#options) are supported or will be in
 the future. See [currently unsupported options](#currently-unsupported-options) for more details and
 [Additional Options](#additional-options) for new options not supported by gulp-ngdocs.
 
 ### Currently Unsupported Options
+
+###### [[analytics](https://github.com/nikhilmodak/gulp-ngdocs#analytics)] {object}
+  Coming soon.
+
+###### [[discussions](https://github.com/nikhilmodak/gulp-ngdocs#discussions)]
+  Coming soon.
+
+###### [[bestMatch](https://github.com/nikhilmodak/gulp-ngdocs#bestmatch)] {bool}
+  Best match will always occur on submission of search form. Other results will still be visible in the left nav bar.
+
+###### [[navTemplate](https://github.com/nikhilmodak/gulp-ngdocs#navtemplate)] {string}
 
 
 ### Additional Options
@@ -104,14 +117,41 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
   ```
 
 ###### [legal.companyName] {string}
-    The company or project name you would like visible on the docs.
+  The company or project name you would like visible on the docs.
 
 ###### [legal.privacyLink] {string}
-    The link to your privacy policy.
+  The link to your privacy policy.
 
 ###### [legal.termsLink] {string}
-    The link to your terms and condition policy.
+  The link to your terms and condition policy.
 
+###### [favicon] {string}
+  The path to your .ico file used for the title icon of the docs site.
+  Give the full path from the root of the docs folder.
+
+  Example: Given the folder structure...
+  ```js
+  | - config
+  | - dist
+      | -- material-docs.ico
+  | - docs
+  | - src
+      | -- app
+      | -- assets
+           | -- images
+                | -- material-docs.ico
+
+  ```
+
+  ```js
+  var faviconPath = 'dist/material-docs.ico'
+  ```
+
+  OR
+
+  ```js
+  var faviconPath = 'src/assets/images/material-docs.ico'
+  ```
 
 
 ## Demo
