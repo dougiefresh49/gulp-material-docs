@@ -9,6 +9,14 @@ A gulp plugin to create Material Design inspired documentation
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
+## Table of Contents
+
+    1. [Why Material Docs?](#why-material-docs)
+    1. [Setup](#setup)
+    1. [Usage](#usage)
+    1. [Demo](#demo)
+    1. [Building Material Docs Locally](#building-material-docs-locally)
+
 ## Why Material Docs?
 `gulp-material-docs` document generator is a beautiful AND easy way to display your docs based on Google's
 [Material Design Patterns](https://www.google.com/design/spec/material-design/introduction.html).
@@ -73,9 +81,41 @@ gulp.task('docs:inject', ['docs:make'], function() {
         .pipe(gulp.dest('docs/'));
 });
 ```
+## Options
+Most options supported by [gulp-ngdocs](https://github.com/nikhilmodak/gulp-ngdocs#options) are supported or will be in
+the future. See [currently unsupported options](#currently-unsupported-options) for more details and
+[Additional Options](#additional-options) for new options not supported by gulp-ngdocs.
+
+### Currently Unsupported Options
+
+
+### Additional Options
+
+###### [legal] {object}
+    The legal object is a container for links / text in the footer of the left navbar.
+
+    ```js
+    var legal = {
+        companyName: 'Some Company',
+        privacyLink: 'http://www.google.com/intl/en/policies/privacy/'
+        termsLink: 'http://www.google.com/intl/en/policies/terms/'
+    };
+    ```
+
+    ###### [legal.companyName] {string}
+        The company or project name you would like visible on the docs.
+
+    ###### [legal.privacyLink] {string}
+        The link to your privacy policy.
+
+    ###### [legal.termsLink] {string}
+        The link to your terms and condition policy.
+
+
+
 ## Demo
 A full working demo will be available soon. For now, please follow the steps for
-[Building Material Docs Locally](## Building Material Docs Locally).
+[Building Material Docs Locally](#building-material-docs-locally).
 
 ## Building Material Docs Locally
 1. Clone the repository from [GitHub](https://github.com/dougiefresh49/gulp-material-docs)
