@@ -28,6 +28,9 @@
     "url": "https://github.com/dougiefresh49/gulp-material-docs/issues"
   },
   "homepage": "https://github.com/dougiefresh49/gulp-material-docs#readme",
+  "dependencies" : {
+    "gulp-ngdocs": "git+https://github.com/nikhilmodak/gulp-ngdocs.git"
+  },
   "devDependencies": {
     "chai": "3.4.1",
     "codecov.io": "0.1.6",
@@ -45,7 +48,6 @@
     "gulp-insert": "^0.5.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-minify-html": "^1.0.5",
-    "gulp-ngdocs": "git+https://github.com/nikhilmodak/gulp-ngdocs.git",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-strip-debug": "^1.1.0",
