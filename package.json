@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/dougiefresh49/gulp-material-docs#readme",
   "dependencies" : {
+    "extend": "^3.0.0",
     "gulp-ngdocs": "git+https://github.com/nikhilmodak/gulp-ngdocs.git"
   },
   "devDependencies": {
@@ -37,7 +38,6 @@
     "commitizen": "2.5.0",
     "cz-conventional-changelog": "1.1.5",
     "del": "^2.2.0",
-    "extend": "^3.0.0",
     "ghooks": "1.0.3",
     "gulp": "^3.9.0",
     "gulp-angular-htmlify": "^2.3.0",
