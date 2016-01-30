@@ -11,11 +11,12 @@ A gulp plugin to create Material Design inspired documentation
 
 ## Table of Contents
 
-    1. [Why Material Docs?](#why-material-docs)
-    1. [Setup](#setup)
-    1. [Usage](#usage)
-    1. [Demo](#demo)
-    1. [Building Material Docs Locally](#building-material-docs-locally)
+  1. [Why Material Docs?](#why-material-docs)
+  1. [Setup](#setup)
+  1. [Usage](#usage)
+  1. [Options](#options)
+  1. [Demo](#demo)
+  1. [Building Material Docs Locally](#building-material-docs-locally)
 
 ## Why Material Docs?
 `gulp-material-docs` document generator is a beautiful AND easy way to display your docs based on Google's
@@ -92,24 +93,24 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
 ### Additional Options
 
 ###### [legal] {object}
-    The legal object is a container for links / text in the footer of the left navbar.
+  The legal object is a container for links / text in the footer of the left navbar.
 
-    ```js
-    var legal = {
-        companyName: 'Some Company',
-        privacyLink: 'http://www.google.com/intl/en/policies/privacy/'
-        termsLink: 'http://www.google.com/intl/en/policies/terms/'
-    };
-    ```
+  ```js
+  var legal = {
+    companyName: 'Some Company',
+    privacyLink: 'http://www.google.com/intl/en/policies/privacy/'
+    termsLink: 'http://www.google.com/intl/en/policies/terms/'
+  };
+  ```
 
-    ###### [legal.companyName] {string}
-        The company or project name you would like visible on the docs.
+###### [legal.companyName] {string}
+    The company or project name you would like visible on the docs.
 
-    ###### [legal.privacyLink] {string}
-        The link to your privacy policy.
+###### [legal.privacyLink] {string}
+    The link to your privacy policy.
 
-    ###### [legal.termsLink] {string}
-        The link to your terms and condition policy.
+###### [legal.termsLink] {string}
+    The link to your terms and condition policy.
 
 
 
