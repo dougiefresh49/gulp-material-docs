@@ -16,6 +16,7 @@
      * @requires ngAnimate
      * @requires docsApp.body
      * @requires docsApp.chapter
+     * @requires docsApp.head
      * @requires docsApp.header
      * @requires docsApp.nav
      * @requires docsApp.search
@@ -25,6 +26,7 @@
         'ngAnimate',
         'docsApp.body',
         'docsApp.chapter',
+        'docsApp.head',
         'docsApp.header',
         'docsApp.nav',
         'docsApp.search'

@@ -45,13 +45,14 @@
      * @requires ng.$scope
      * @requires ng.$location
      * @requires docsApp.nav.service:mtdNavSectionService
+     * @requires docsApp.head.service:mtdHeadService
      */
 
 
-    BodyController.$inject = ['$scope', '$location', 'mtdNavSectionService'];
+    BodyController.$inject = ['$scope', '$location', 'mtdNavSectionService', 'mtdHeadService'];
 
     /* @ngInject */
-    function BodyController($scope, $location, mtdNavSectionService) {
+    function BodyController($scope, $location, mtdNavSectionService, mtdHeadService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -105,13 +106,16 @@
          * @name activate
          * @methodOf docsApp.body.controller:BodyController
          * @description
-         * The activate method that will use the {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
+         * The activate method that will use the {@link docsApp.head.service:mtdHeadService mtdHeadService} to append
+         * head related info based on user preference and use the
+         * {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
          * to create the sections object once on the first page load.
          *
          * After sections are created, it set a private flag to announce that isActivated = true.
          *
          */
         function activate() {
+            mtdHeadService.addTitleAndIco();
             vm.sections = mtdNavSectionService.createSections();
             isActivated = true;
         }

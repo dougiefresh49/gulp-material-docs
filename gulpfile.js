@@ -108,7 +108,7 @@ gulp.task('build:assets', ['build:sass', 'build:images']);
 
 gulp.task('build:images', function() {
     return gulp
-        .src(['src/assets/images/**/*'])
+        .src(['src/assets/images/material-docs.ico', 'src/assets/images/material-docs.svg'])
         .pipe(gulp.dest('dist/'));
 });
 
@@ -194,6 +194,7 @@ function getDocsOptions() {
         title: "Gulp Material Docs",
         startPage: '/viewer',
         imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
-        titleLink: "/viewer"
+        titleLink: "/viewer",
+        favicon: 'dist/material-docs.ico'
     };
 }
