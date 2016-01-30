@@ -141,9 +141,10 @@
             // On start, open desired section / subsections
             if(!landingSectionOpen && vm.sections[sectionID]) {
                 vm.sections[sectionID].showSubSections = true;
-                mtdNavSectionService.openSubSection(vm.sections[sectionID], pageId);
                 landingSectionOpen = true;
             }
+
+            mtdNavSectionService.openSubSection(vm.sections[sectionID], pageId);
 
             // update active page
             if(vm.sections[sectionID]) {
