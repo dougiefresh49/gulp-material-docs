@@ -10,15 +10,15 @@ module.exports = {
 };
 
 /* Functions */
-function getScripts() {
+function getScripts(nodeModuleDir) {
     return [
-        config.folders.dist + 'material-docs.min.js'
+        nodeModuleDir + config.folders.dist + 'material-docs.min.js'
     ];
 }
 
-function getStyles() {
+function getStyles(nodeModuleDir) {
     return [
-        config.folders.dist + 'material-docs.min.css'
+        nodeModuleDir + config.folders.dist + 'material-docs.min.css'
     ];
 }
 
@@ -31,10 +31,14 @@ function getLegalObj(existingObj) {
 }
 
 function getDefaultOptions() {
+    var nodeModuleDir = 'node_modules/gulp-material-docs/';
+
     return {
-        template: config.folders.dist + 'index.html',
+        template: nodeModuleDir + config.folders.dist + 'index.html',
         scripts: getScripts(),
         styles: getStyles(),
-        legal: getLegalObj()
+        legal: getLegalObj(),
+        nodeModulesDir: nodeModuleDir,
+        image: nodeModuleDir + config.folders.dist + 'material-docs.svg'
     };
 }

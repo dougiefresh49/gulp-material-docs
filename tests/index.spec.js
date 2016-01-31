@@ -10,7 +10,7 @@ describe('Gulp Material Docs', function () {
 
             it('should have default template from dist', function () {
                 var defaults = helpers.getDefaultOptions();
-                expect(defaults.template).to.be.eql('dist/index.html');
+                expect(defaults.template).to.be.eql('node_modules/gulp-material-docs/dist/index.html');
             });
 
             it('should have default scrips', function () {
@@ -29,6 +29,17 @@ describe('Gulp Material Docs', function () {
                 expect(defaults.legal.privacyLink).to.be.eql('');
                 expect(defaults.legal.termsLink).to.be.eql('');
             });
+            
+            it('should have default node modules dir path', function () {
+                var defaults = helpers.getDefaultOptions();
+                expect(defaults.nodeModulesDir).to.be.eql('node_modules/gulp-material-docs/');
+            });
+
+            it('should have default node modules dir path', function () {
+                var defaults = helpers.getDefaultOptions();
+                expect(defaults.image).to.be.eql('node_modules/gulp-material-docs/dist/material-docs.svg');
+            });
+            
         });
 
         describe('Get Legal Object', function () {
@@ -78,7 +89,8 @@ describe('Gulp Material Docs', function () {
                 image: 'dist/material-docs.svg',
                 template: 'dist/index.html',
                 imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
-                titleLink: "/materialDocs"
+                titleLink: "/materialDocs",
+                nodeModulesDir: './'
             };
 
             var fileStream = materialDocs.make(options);
@@ -98,7 +110,6 @@ describe('Gulp Material Docs', function () {
             var src = materialDocs.srcToInject('my-docs', {});
             expect(src.length).to.be.eql(7);
             expect(src[0]).to.be.eql('my-docs/js/docs-setup.js');
-
         });
 
         it('should get src scripts with options', function () {

@@ -195,6 +195,7 @@ function getDocsOptions() {
         startPage: '/viewer',
         imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
         titleLink: "/viewer",
-        favicon: 'dist/material-docs.ico'
+        favicon: 'dist/material-docs.ico',
+        nodeModulesDir: './'
     };
 }

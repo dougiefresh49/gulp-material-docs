@@ -103,7 +103,6 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
 
 ###### [[navTemplate](https://github.com/nikhilmodak/gulp-ngdocs#navtemplate)] {string}
 
-
 ### Additional Options
 
 ###### [legal] {object}
@@ -117,8 +116,22 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
   };
   ```
 
+###### [nodeModulesDir] {string} default: `node_modules/gulp-material-docs/`
+  - The path to your node modules, relative to your gulpfile.js
 
-###### [favicon] {string}
+  Example: Given the folder structure...
+  ```js
+  | - config
+  | - dist
+  | - docs
+  | - node_modules
+  | - src
+  | - gulpfile.js
+  ```
+  the default path will work
+
+
+###### [favicon] {string} default: `''`
   - The path to your .ico file used for the title icon of the docs site.
 
   Example: Given the folder structure...
