@@ -1,4 +1,4 @@
-# Gulp Material Docs
+# ![logo](src/assets/images/material-docs-ico.png) Gulp Material Docs
 A gulp plugin to create Material Design inspired documentation
 
 [![travis build](https://img.shields.io/travis/dougiefresh49/gulp-material-docs.svg?style=flat-square)](https://travis-ci.org/dougiefresh49/gulp-material-docs)
