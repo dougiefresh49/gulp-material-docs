@@ -84,6 +84,37 @@ gulp.task('docs:inject', ['docs:make'], function() {
 });
 ```
 
+### Supplying your own Angular Version
+
+* In the main task, add the `scripts` list to the `options`
+
+```js
+var options = {
+        html5Mode: false,
+        title: "Gulp Material Docs",
+        startPage: '/materialDocs',
+        scripts: [
+            'bower_components/angular/angular.min.js',
+            'bower_components/angular-animate/angular-animate.min.js'
+        ],
+        imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
+        titleLink: "/materialDocs"
+    };
+```
+
+* and in the inject step, simply pass the angular paths to `srcToInject` function 
+[link to source file for  more details](https://github.com/dougiefresh49/gulp-material-docs/blob/master/index.js#L30-L47)
+
+```js
+
+var angularOptions = {
+    angularPath: 'bower_components/angular/angular.min.js',
+    ngAnimatePath: 'bower_components/angular-animate/angular-animate.min.js'
+};
+
+var toInject = gulp.src(materialDocs.srcToInject('docs/', angularOptions), { read: false });
+```
+
 ## Options
 
 Most options supported by [gulp-ngdocs](https://github.com/nikhilmodak/gulp-ngdocs#options) are supported or will be in
