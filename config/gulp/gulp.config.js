@@ -28,8 +28,8 @@ module.exports = function() {
         toInject : {
             dev: [
                 'docs/js/docs-setup.js',
-                'docs/js/angular.min.js',
-                'docs/js/angular-animate.min.js',
+                'docs/js/bower_components/angular/angular.min.js',
+                'docs/js/bower_components/angular-animate/angular-animate.min.js',
                 'docs/**/*material-docs.js',
                 'docs/css/docs.css',
                 'docs/css/animations.css',
@@ -38,8 +38,8 @@ module.exports = function() {
             ],
             docs: [
                 'docs/js/docs-setup.js',
-                'docs/js/angular.min.js',
-                'docs/js/angular-animate.min.js',
+                'docs/js/bower_components/angular/angular.min.js',
+                'docs/js/bower_components/angular-animate/angular-animate.min.js',
                 'docs/**/*material-docs.min.*',
                 'docs/css/docs.css',
                 'docs/css/animations.css',

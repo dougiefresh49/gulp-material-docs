@@ -47,7 +47,11 @@ gulp.task('docs:make', function() {
 });
 
 gulp.task('docs:inject', function() {
-    var toInject = gulp.src(materialDocs.srcToInject('docs/'), { read: false });
+    var angularOptions = {
+        angularPath: 'bower_components/angular/angular.min.js',
+        ngAnimatePath: 'bower_components/angular-animate/angular-animate.min.js'
+    };
+    var toInject = gulp.src(materialDocs.srcToInject('docs/', angularOptions), { read: false });
 
     return gulp
         .src('docs/index.html')
@@ -61,7 +65,11 @@ gulp.task('docs:make::dev', function() {
 
     // Dev only options
     options.title = "Gulp Material Docs::Dev";
-    options.scripts = [ 'dist/material-docs.js' ];
+    options.scripts = [
+        'dist/material-docs.js',
+        'bower_components/angular/angular.min.js',
+        'bower_components/angular-animate/angular-animate.min.js'
+    ];
     options.styles = [ 'dist/material-docs.css' ];
 
     return materialDocs
@@ -191,6 +199,10 @@ function getDocsSections() {
 function getDocsOptions() {
     return {
         html5Mode: false,
+        scripts: [
+          'bower_components/angular/angular.min.js',
+          'bower_components/angular-animate/angular-animate.min.js'
+        ],
         title: "Gulp Material Docs",
         startPage: '/viewer',
         imageLink: "https://github.com/dougiefresh49/gulp-material-docs",

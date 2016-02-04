@@ -1,0 +1,29 @@
+{
+  "name": "gulp-material-docs",
+  "description": "A gulp plugin to create Material Design inspired documentation",
+  "main": "index.js",
+  "authors": [
+    "Doug Lasater <doug.lasater.3@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gulp",
+    "angular",
+    "material",
+    "design",
+    "docs"
+  ],
+  "homepage": "https://github.com/dougiefresh49/gulp-material-docs",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.9",
+    "angular-animate": "~1.4.9"
+  }
+}
