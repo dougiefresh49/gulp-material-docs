@@ -84,6 +84,37 @@ gulp.task('docs:inject', ['docs:make'], function() {
 });
 ```
 
+### Supplying your own Angular Version
+This is just as easy and is **required** if you are using node -version 3 and above
+
+* In the main task, add the `scripts` list to the `options` object with your `angular` and `angular-animate` paths.
+
+```js
+var options = {
+        html5Mode: false,
+        title: "Gulp Material Docs",
+        startPage: '/materialDocs',
+        scripts: [
+            'bower_components/angular/angular.min.js',
+            'bower_components/angular-animate/angular-animate.min.js'
+        ],
+        imageLink: "https://github.com/dougiefresh49/gulp-material-docs",
+        titleLink: "/materialDocs"
+    };
+```
+
+* In the inject step, simply pass the angular paths to `srcToInject` function 
+[link to source file for  more details](https://github.com/dougiefresh49/gulp-material-docs/blob/master/index.js#L30-L47)
+
+```js
+var angularOptions = {
+    angularPath: 'bower_components/angular/angular.min.js',
+    ngAnimatePath: 'bower_components/angular-animate/angular-animate.min.js'
+};
+
+var toInject = gulp.src(materialDocs.srcToInject('docs/', angularOptions), { read: false });
+```
+
 ## Options
 
 Most options supported by [gulp-ngdocs](https://github.com/nikhilmodak/gulp-ngdocs#options) are supported or will be in
@@ -161,8 +192,14 @@ the future. See [currently unsupported options](#currently-unsupported-options) 
 
 
 ## Demo
-A full working demo will be available soon. For now, please follow the steps for
+A full working demo will be available soon. For now, check out the images below or simply follow the steps for
 [Building Material Docs Locally](#building-material-docs-locally).
+
+![material-docs-demo](src/assets/images/material-docs-demo.png)
+
+
+![material-docs-demo-2](src/assets/images/material-docs-demo-2.png)
+
 
 ## Building Material Docs Locally
 1. Clone the repository from [GitHub](https://github.com/dougiefresh49/gulp-material-docs)
@@ -171,7 +208,7 @@ A full working demo will be available soon. For now, please follow the steps for
 
 2. Install the dependencies
 
-    `npm install`
+    `npm install && bower install`
 
 3. Build release or development version
 
@@ -189,7 +226,7 @@ A full working demo will be available soon. For now, please follow the steps for
 
 ## Future Features
   - add mode detailed styling for chapter content and ngdoc files
-  - add ability to provide angular version and change color scheme
+  - add ability to change color scheme
   - add ability for direct source link (docs to code)
   - add ability to show type for property
   - functions - public or private support

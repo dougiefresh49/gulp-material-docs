@@ -28,11 +28,12 @@
     "url": "https://github.com/dougiefresh49/gulp-material-docs/issues"
   },
   "homepage": "https://github.com/dougiefresh49/gulp-material-docs#readme",
-  "dependencies" : {
+  "dependencies": {
     "extend": "^3.0.0",
     "gulp-ngdocs": "git+https://github.com/nikhilmodak/gulp-ngdocs.git"
   },
   "devDependencies": {
+    "bower": "1.7.7",
     "chai": "3.4.1",
     "codecov.io": "0.1.6",
     "commitizen": "2.5.0",
