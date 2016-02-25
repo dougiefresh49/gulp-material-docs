@@ -31,7 +31,8 @@
             isActiveSection: isActiveSection,
             canShowSubSections: canShowSubSections,
             setActiveSection: setActiveSection,
-            openSubSection: openSubSection
+            openSubSection: openSubSection,
+            getSectionsAsList: getSectionsAsList
         };
 
         return service;
@@ -125,6 +126,23 @@
                 var moduleName = section.pages[pageId].moduleName;
                 section.modules[moduleName].showContents = true;
             }
+        }
+
+        /**
+         * @ngdoc method
+         * @name getSectionsAsList
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Get the sections as a list for ng-repeat. Necessary for angular v1.5.0
+         * See {@link https://docs.angularjs.org/error/orderBy/notarray     angular error docs} for more info
+         *
+         * @param {object} sectionsObj  the list of sections as an object
+         * @returns {Array} sections as an array
+         */
+        function getSectionsAsList(sectionsObj) {
+            return Object.keys(sectionsObj).map(function (key) {
+                return sectionsObj[key];
+            })
         }
 
         /* --- Helper Functions --- */

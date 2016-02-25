@@ -64,6 +64,7 @@
         vm.termsLink = '';
         vm.imageLink = '';
         vm.image = '';
+        vm.sectionsList = [];
 
         /* Functions */
         vm.canShowLink = canShowLink;
@@ -89,6 +90,7 @@
             vm.termsLink = NG_DOCS.__options.legal.termsLink;
             vm.imageLink = NG_DOCS.__options.imageLink;
             vm.image = NG_DOCS.__options.image;
+            vm.sectionsList = mtdNavSectionService.getSectionsAsList(vm.sections)
         }
 
         /**

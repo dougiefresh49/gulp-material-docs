@@ -9,7 +9,7 @@
         <nav class="mdl-navigation">
 
             <!-- Sections List -->
-            <div ng-repeat="(id, section) in vm.sections | orderBy: 'name' ">
+            <div ng-repeat="section in vm.sectionsList | orderBy: 'section.name' ">
 
                 <!-- Section Link -->
                 <a class="mdl-navigation__link section-link"

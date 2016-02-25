@@ -40,26 +40,6 @@
 })();
 
 /** --------------------------------
- * mtd-body.module.js
- * Created by dougiefresh49 on 1/27/16.
- * ---------------------------------
- */
-(function () {
-    'use strict';
-
-    /**
-     * @ngdoc object
-     * @name docsApp.body
-     * @description
-     *
-     * The docsApp.body module definition.
-     */
-
-    angular.module('docsApp.body', []);
-
-})();
-
-/** --------------------------------
  * mtd-chapter.module.js
  * Created by dougiefresh49 on 1/27/16.
  * ---------------------------------
@@ -76,6 +56,45 @@
      */
 
     angular.module('docsApp.chapter', []);
+
+})();
+
+/** --------------------------------
+ * mtd-head.module.js
+ * Created by dougiefresh49 on 1/30/16.
+ * ---------------------------------
+ */
+(function () {
+    'use strict';
+
+    /**
+     * @ngdoc object
+     * @name docsApp.head
+     * @description
+     *
+     * The docsApp.head module definition.
+     */
+    angular.module('docsApp.head', []);
+
+})();
+
+/** --------------------------------
+ * mtd-body.module.js
+ * Created by dougiefresh49 on 1/27/16.
+ * ---------------------------------
+ */
+(function () {
+    'use strict';
+
+    /**
+     * @ngdoc object
+     * @name docsApp.body
+     * @description
+     *
+     * The docsApp.body module definition.
+     */
+
+    angular.module('docsApp.body', []);
 
 })();
 
@@ -116,25 +135,6 @@
      */
 
     angular.module('docsApp.nav', []);
-
-})();
-
-/** --------------------------------
- * mtd-head.module.js
- * Created by dougiefresh49 on 1/30/16.
- * ---------------------------------
- */
-(function () {
-    'use strict';
-
-    /**
-     * @ngdoc object
-     * @name docsApp.head
-     * @description
-     *
-     * The docsApp.head module definition.
-     */
-    angular.module('docsApp.head', []);
 
 })();
 
@@ -196,185 +196,9 @@ angular.module("docsApp").run(["$templateCache", function($templateCache) {$temp
 $templateCache.put("app/mtd-chapter/mtd-chapter.html","<main class=\"mdl-layout__content mdl-color--grey-50\"><div class=\"mdl-grid mdl-chapter\"><div class=\"mdl-cell mdl-cell--2-col\"></div><div class=\"mdl-cell mdl-cell--8-col\"><div id=loading data-ng-show=loading>Loading...</div><div id=chapterBody src=vm.currentPage.partialUrl onload=vm.onPartialLoad() autoscroll class=\"content slide-reveal\" data-ng-hide=loading data-ng-include></div></div><div class=\"mdl-cell mdl-cell--2-col\"></div></div></main>");
 $templateCache.put("app/mtd-header/mtd-header.html","<header id=waterfallHeader class=\"mdl-layout__header mdl-layout--fixed-header mdl-layout__header--waterfall\"><div class=mdl-layout_header--top-section><div class=mdl-layout__header-row><span class=mdl-layout_header--section-title>{{ vm.headerTitle }} <span data-ng-repeat=\"section in vm.sections\"><span class=mdl-layout_header--section-subtitle data-ng-if=vm.isActiveSection(section.url)>- {{ section.name }}</span></span></span><div class=mdl-layout-spacer></div><mtd-search sections=vm.sections></mtd-search></div></div></header>");
 $templateCache.put("app/mtd-search/mtd-search.html","<form data-ng-submit=vm.submitSearch()><div class=\"mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right\"><label class=\"mdl-button mdl-js-button mdl-button--icon mdl-button--search\" for=waterfall-search><i class=material-icons>search</i></label><div class=mdl-textfield__expandable-holder><input id=waterfall-search class=mdl-textfield__input type=text name=search accesskey=s data-ng-change=vm.updateSearch() data-ng-model=vm.search></div></div></form>");
-$templateCache.put("app/mtd-nav/drawer/mtd-nav-drawer.html","<div class=\"mdl-layout__drawer mdl-color--white mdl-color-text--grey-800\"><div class=mdl-layout__drawer-wrapper><header id=logo class=mdl-layout__header-row><a href=\"{{ vm.imageLink }}\"><img class=pull-left src=\"{{ vm.image }}\"></a></header><nav class=mdl-navigation><div data-ng-repeat=\"(id, section) in vm.sections | orderBy: \'name\'\"><a class=\"mdl-navigation__link section-link\" href=\"{{ section.url }}\" data-ng-class=\"{\'active--section-link\' : vm.isActiveSection(section.url)}\" data-ng-click=vm.toggleSection(section)>{{ section.name }}</a><nav class=\"mdl-navigation mdl-color--white mdl-color-text--grey-800\" data-ng-if=vm.canShowSubSections(section)><mtd-nav-modules modules=section.modules></mtd-nav-modules></nav></div></nav><div class=mdl-legal><p data-ng-if=vm.canShowLink(vm.companyName)>{{ vm.companyName}} ©</p><div class=privacy-and-terms><a href=\"{{ vm.privacyLink }}\" data-ng-if=vm.canShowLink(vm.privacyLink)>Privacy</a> <span data-ng-if=\"vm.canShowLink(vm.privacyLink) && vm.canShowLink(vm.termsLink)\">&</span> <a href={{vm.termsLink}} data-ng-if=vm.canShowLink(vm.termsLink)>Terms</a></div><p class=powered-by>Powered by <a href=https://github.com/dougiefresh49/gulp-material-docs>Gulp Material Docs</a></p></div></div></div>");
+$templateCache.put("app/mtd-nav/drawer/mtd-nav-drawer.html","<div class=\"mdl-layout__drawer mdl-color--white mdl-color-text--grey-800\"><div class=mdl-layout__drawer-wrapper><header id=logo class=mdl-layout__header-row><a href=\"{{ vm.imageLink }}\"><img class=pull-left src=\"{{ vm.image }}\"></a></header><nav class=mdl-navigation><div data-ng-repeat=\"section in vm.sectionsList | orderBy: \'section.name\'\"><a class=\"mdl-navigation__link section-link\" href=\"{{ section.url }}\" data-ng-class=\"{\'active--section-link\' : vm.isActiveSection(section.url)}\" data-ng-click=vm.toggleSection(section)>{{ section.name }}</a><nav class=\"mdl-navigation mdl-color--white mdl-color-text--grey-800\" data-ng-if=vm.canShowSubSections(section)><mtd-nav-modules modules=section.modules></mtd-nav-modules></nav></div></nav><div class=mdl-legal><p data-ng-if=vm.canShowLink(vm.companyName)>{{ vm.companyName}} ©</p><div class=privacy-and-terms><a href=\"{{ vm.privacyLink }}\" data-ng-if=vm.canShowLink(vm.privacyLink)>Privacy</a> <span data-ng-if=\"vm.canShowLink(vm.privacyLink) && vm.canShowLink(vm.termsLink)\">&</span> <a href={{vm.termsLink}} data-ng-if=vm.canShowLink(vm.termsLink)>Terms</a></div><p class=powered-by>Powered by <a href=https://github.com/dougiefresh49/gulp-material-docs>Gulp Material Docs</a></p></div></div></div>");
 $templateCache.put("app/mtd-nav/list/mtd-nav-list.html","<div data-ng-repeat=\"page in vm.objectList track by page.url\"><a class=mdl-navigation__link href=\"{{ page.url }}\" data-ng-class=\"(vm.activeLink === page.url) ? \'active\' : \'\'\" data-ng-if=vm.isMatchedPage(page.rank)>{{ page.shortName }}</a></div>");
 $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repeat=\"(id, module) in vm.modules track by module.url\"><a class=\"mdl-navigation__link mdl-bold\" href=\"{{ module.url }}\" data-ng-click=vm.toggleModule(module) data-ng-if=vm.isMatchedPage(module.pageData.rank) data-ng-class=\"{ \'active\' : vm.activeLink === module.url }\">{{ module.name }}</a><div class=mdl-navigation_nested data-ng-if=module.showContents><mtd-nav-list object-list=module.others active-link=vm.activeLink></mtd-nav-list><mtd-nav-list object-list=module.directives active-link=vm.activeLink></mtd-nav-list><mtd-nav-list object-list=module.controllers active-link=vm.activeLink></mtd-nav-list><mtd-nav-list object-list=module.filters active-link=vm.activeLink></mtd-nav-list><div data-ng-repeat=\"service in module.services track by service.instance.url\"><a class=mdl-navigation__link href=\"{{ service.instance.url }}\" data-ng-class=\"(vm.activeLink === service.instance.url) ? \'active\' : \'\'\" data-ng-if=vm.isMatchedPage(service.instance.rank)>{{service.name}}</a> <a class=mdl-navigation__link href=\"{{ service.provider.url }}\" data-ng-show=service.provider data-ng-class=\"(vm.activeLink === service.provider.url) ? \'active\' : \'\'\" data-ng-if=vm.isMatchedPage(service.provider.rank)><i class=material-icons role=presentation>settings</i></a></div><mtd-nav-list object-list=module.types active-link=vm.activeLink></mtd-nav-list><mtd-nav-list object-list=module.globals active-link=vm.activeLink></mtd-nav-list></div></div>");}]);
-/** --------------------------------
- * mtd-body.directive.js
- * Created by dougiefresh49 on 1/19/16.
- * ---------------------------------
- */
-(function () {
-    'use strict';
-
-    /**
-     * @ngdoc directive
-     * @name docsApp.body.directive:mtdBody
-     * @scope
-     * @restrict E
-     *
-     * @description
-     * Directive for the docsApp module.  It...
-     *
-     *
-     */
-
-    angular
-        .module('docsApp.body')
-        .directive('mtdBody', mtdBodyBody);
-
-    function mtdBodyBody() {
-        var directive = {
-            restrict: 'E',
-            templateUrl: 'app/mtd-body/mtd-body.html',
-            scope: {},
-            controller: BodyController,
-            controllerAs: 'vm',
-            bindToController: true,
-            replace: true
-        };
-
-        return directive;
-    }
-
-    /**
-     * @ngdoc controller
-     * @name docsApp.body.controller:BodyController
-     * @description
-     * The main view controller for the Body directive
-     *
-     * @requires ng.$scope
-     * @requires ng.$location
-     * @requires docsApp.nav.service:mtdNavSectionService
-     * @requires docsApp.head.service:mtdHeadService
-     */
-
-
-    BodyController.$inject = ['$scope', '$location', 'mtdNavSectionService', 'mtdHeadService'];
-
-    /* @ngInject */
-    function BodyController($scope, $location, mtdNavSectionService, mtdHeadService) {
-        /* jshint validthis: true */
-        var vm = this;
-
-        /* Private Attributes */
-        var isActivated = false;
-        var landingSectionOpen = false;
-
-        /* Attributes */
-        vm.title = 'BodyController';
-
-        /**
-         * @ngdoc property
-         * @name sections
-         * @propertyOf docsApp.body.controller:BodyController
-         * @description
-         * object used to house all section objects
-         */
-        vm.sections = {};
-
-        /**
-         * @ngdoc property
-         * @name currentPage
-         * @propertyOf docsApp.body.controller:BodyController
-         * @description
-         * object used to keep track of the current page
-         */
-        vm.currentPage = {};
-
-        /* Functions */
-        vm.activate = activate;
-
-        /* Watchers */
-        /**
-         * @ngdoc method
-         * @name $watch
-         * @methodOf docsApp.body.controller:BodyController
-         * @description
-         * $watcher function that watches the $location change returned in
-         * {@link docsApp.body.controller:BodyController#methods_watchPath watchPath}
-         * and then {@link docsApp.body.controller:BodyController#methods_updateActivePage updateActivePage}
-         *
-         */
-        $scope.$watch(watchPath, updateActivePage);
-
-        activate();
-
-        ////////////////
-
-        /**
-         * @ngdoc method
-         * @name activate
-         * @methodOf docsApp.body.controller:BodyController
-         * @description
-         * The activate method that will use the {@link docsApp.head.service:mtdHeadService mtdHeadService} to append
-         * head related info based on user preference and use the
-         * {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
-         * to create the sections object once on the first page load.
-         *
-         * After sections are created, it set a private flag to announce that isActivated = true.
-         *
-         */
-        function activate() {
-            mtdHeadService.addTitleAndIco();
-            vm.sections = mtdNavSectionService.createSections();
-            isActivated = true;
-        }
-
-        /**
-         * @ngdoc function
-         * @name updateActivePage
-         * @methodOf docsApp.body.controller:BodyController
-         * @description
-         * On $location change, the active section is saved and the {@link docsApp.body.controller:BodyController#properties_currentPage currentPage} is updated based on the
-         * new path in the url.
-         *
-         * Upon landing, it will pre-open the necessary left nav sections based on the url.
-         *
-         */
-        function updateActivePage() {
-            if(!isActivated) {
-                return;
-            }
-
-            var sectionID = $location.path().split('/')[1];
-            var pageId = $location.path().split('/')[2];
-
-            // save active section
-            mtdNavSectionService.setActiveSection(sectionID);
-
-            // On start, open desired section / subsections
-            if(!landingSectionOpen && vm.sections[sectionID]) {
-                vm.sections[sectionID].showSubSections = true;
-                landingSectionOpen = true;
-            }
-
-            mtdNavSectionService.openSubSection(vm.sections[sectionID], pageId);
-
-            // update active page
-            if(vm.sections[sectionID]) {
-                vm.currentPage = vm.sections[sectionID].pages[pageId];
-            }
-
-        }
-
-        /**
-         * @ngdoc function
-         * @name watchPath
-         * @methodOf docsApp.body.controller:BodyController
-         * @description
-         * Used by the $watch function and returns the $location.path() url string.
-         *
-         * @returns {string} $location.path() string is returned
-         */
-        function watchPath() {
-            return $location.path();
-        }
-
-    }
-
-})();
-
 /** --------------------------------
  * mtd-chapter-dependencies.service.js
  * Created by dougiefresh49 on 1/14/16.
@@ -904,6 +728,244 @@ $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repe
 })();
 
 /** --------------------------------
+ * mtd-head.controller.js
+ * Created by dougiefresh49 on 1/30/16.
+ * ---------------------------------
+ */
+(function () {
+    'use strict';
+
+    /**
+     * @ngdoc service
+     * @name docsApp.head.service:mtdHeadService
+     * @description
+     * Service responsible for appending user's head information such as title and favicon files
+     */
+    angular
+        .module('docsApp.head')
+        .factory('mtdHeadService', mtdHeadService);
+
+    mtdHeadService.$inject = [];
+
+    /* @ngInject */
+    function mtdHeadService() {
+        var service = {
+            addTitleAndIco: addTitleAndIco
+        };
+
+        return service;
+
+        ////////////////
+
+        /**
+         * @ngdoc function
+         * @name addTitleAndIco
+         * @methodOf docsApp.head.service:mtdHeadService
+         * @description
+         * Helper function to add the title and favico file to the header section
+         *
+         */
+        function addTitleAndIco() {
+            var title = 'Docs';
+            var favicon = '';
+
+            if(NG_DOCS.__options) {
+                title = (NG_DOCS.__options.title !== '') ? NG_DOCS.__options.title : 'Docs';
+                favicon = (NG_DOCS.__options.favicon && NG_DOCS.__options.favicon !== '')
+                    ? '../' + NG_DOCS.__options.favicon
+                    : '';
+            }
+
+            var titleHtml = '<title>' + title + '</title>';
+            var icoHtml = '<link rel="shortcut icon" href="' + favicon + '"/>';
+
+            angular.element( document.querySelector('head')).prepend(titleHtml);
+            angular.element( document.querySelector('head')).prepend(icoHtml);
+        }
+
+        ////////////////
+
+    }
+
+})();
+
+/** --------------------------------
+ * mtd-body.directive.js
+ * Created by dougiefresh49 on 1/19/16.
+ * ---------------------------------
+ */
+(function () {
+    'use strict';
+
+    /**
+     * @ngdoc directive
+     * @name docsApp.body.directive:mtdBody
+     * @scope
+     * @restrict E
+     *
+     * @description
+     * Directive for the docsApp module.  It...
+     *
+     *
+     */
+
+    angular
+        .module('docsApp.body')
+        .directive('mtdBody', mtdBodyBody);
+
+    function mtdBodyBody() {
+        var directive = {
+            restrict: 'E',
+            templateUrl: 'app/mtd-body/mtd-body.html',
+            scope: {},
+            controller: BodyController,
+            controllerAs: 'vm',
+            bindToController: true,
+            replace: true
+        };
+
+        return directive;
+    }
+
+    /**
+     * @ngdoc controller
+     * @name docsApp.body.controller:BodyController
+     * @description
+     * The main view controller for the Body directive
+     *
+     * @requires ng.$scope
+     * @requires ng.$location
+     * @requires docsApp.nav.service:mtdNavSectionService
+     * @requires docsApp.head.service:mtdHeadService
+     */
+
+
+    BodyController.$inject = ['$scope', '$location', 'mtdNavSectionService', 'mtdHeadService'];
+
+    /* @ngInject */
+    function BodyController($scope, $location, mtdNavSectionService, mtdHeadService) {
+        /* jshint validthis: true */
+        var vm = this;
+
+        /* Private Attributes */
+        var isActivated = false;
+        var landingSectionOpen = false;
+
+        /* Attributes */
+        vm.title = 'BodyController';
+
+        /**
+         * @ngdoc property
+         * @name sections
+         * @propertyOf docsApp.body.controller:BodyController
+         * @description
+         * object used to house all section objects
+         */
+        vm.sections = {};
+
+        /**
+         * @ngdoc property
+         * @name currentPage
+         * @propertyOf docsApp.body.controller:BodyController
+         * @description
+         * object used to keep track of the current page
+         */
+        vm.currentPage = {};
+
+        /* Functions */
+        vm.activate = activate;
+
+        /* Watchers */
+        /**
+         * @ngdoc method
+         * @name $watch
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * $watcher function that watches the $location change returned in
+         * {@link docsApp.body.controller:BodyController#methods_watchPath watchPath}
+         * and then {@link docsApp.body.controller:BodyController#methods_updateActivePage updateActivePage}
+         *
+         */
+        $scope.$watch(watchPath, updateActivePage);
+
+        activate();
+
+        ////////////////
+
+        /**
+         * @ngdoc method
+         * @name activate
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * The activate method that will use the {@link docsApp.head.service:mtdHeadService mtdHeadService} to append
+         * head related info based on user preference and use the
+         * {@link docsApp.nav.service:mtdNavSectionService mtdNavSectionService}
+         * to create the sections object once on the first page load.
+         *
+         * After sections are created, it set a private flag to announce that isActivated = true.
+         *
+         */
+        function activate() {
+            mtdHeadService.addTitleAndIco();
+            vm.sections = mtdNavSectionService.createSections();
+            isActivated = true;
+        }
+
+        /**
+         * @ngdoc function
+         * @name updateActivePage
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * On $location change, the active section is saved and the {@link docsApp.body.controller:BodyController#properties_currentPage currentPage} is updated based on the
+         * new path in the url.
+         *
+         * Upon landing, it will pre-open the necessary left nav sections based on the url.
+         *
+         */
+        function updateActivePage() {
+            if(!isActivated) {
+                return;
+            }
+
+            var sectionID = $location.path().split('/')[1];
+            var pageId = $location.path().split('/')[2];
+
+            // save active section
+            mtdNavSectionService.setActiveSection(sectionID);
+
+            // On start, open desired section / subsections
+            if(!landingSectionOpen && vm.sections[sectionID]) {
+                vm.sections[sectionID].showSubSections = true;
+                landingSectionOpen = true;
+            }
+
+            mtdNavSectionService.openSubSection(vm.sections[sectionID], pageId);
+
+            // update active page
+            if(vm.sections[sectionID]) {
+                vm.currentPage = vm.sections[sectionID].pages[pageId];
+            }
+
+        }
+
+        /**
+         * @ngdoc function
+         * @name watchPath
+         * @methodOf docsApp.body.controller:BodyController
+         * @description
+         * Used by the $watch function and returns the $location.path() url string.
+         *
+         * @returns {string} $location.path() string is returned
+         */
+        function watchPath() {
+            return $location.path();
+        }
+
+    }
+
+})();
+
+/** --------------------------------
  * mtd-header.directive.js
  * Created by dougiefresh49 on 1/13/16.
  * ---------------------------------
@@ -986,68 +1048,6 @@ $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repe
          * @returns {bool} returns if the section url is currently active
          */
         vm.isActiveSection = mtdNavSectionService.isActiveSection;
-
-        ////////////////
-
-    }
-
-})();
-
-/** --------------------------------
- * mtd-head.controller.js
- * Created by dougiefresh49 on 1/30/16.
- * ---------------------------------
- */
-(function () {
-    'use strict';
-
-    /**
-     * @ngdoc service
-     * @name docsApp.head.service:mtdHeadService
-     * @description
-     * Service responsible for appending user's head information such as title and favicon files
-     */
-    angular
-        .module('docsApp.head')
-        .factory('mtdHeadService', mtdHeadService);
-
-    mtdHeadService.$inject = [];
-
-    /* @ngInject */
-    function mtdHeadService() {
-        var service = {
-            addTitleAndIco: addTitleAndIco
-        };
-
-        return service;
-
-        ////////////////
-
-        /**
-         * @ngdoc function
-         * @name addTitleAndIco
-         * @methodOf docsApp.head.service:mtdHeadService
-         * @description
-         * Helper function to add the title and favico file to the header section
-         *
-         */
-        function addTitleAndIco() {
-            var title = 'Docs';
-            var favicon = '';
-
-            if(NG_DOCS.__options) {
-                title = (NG_DOCS.__options.title !== '') ? NG_DOCS.__options.title : 'Docs';
-                favicon = (NG_DOCS.__options.favicon && NG_DOCS.__options.favicon !== '')
-                    ? '../' + NG_DOCS.__options.favicon
-                    : '';
-            }
-
-            var titleHtml = '<title>' + title + '</title>';
-            var icoHtml = '<link rel="shortcut icon" href="' + favicon + '"/>';
-
-            angular.element( document.querySelector('head')).prepend(titleHtml);
-            angular.element( document.querySelector('head')).prepend(icoHtml);
-        }
 
         ////////////////
 
@@ -1431,6 +1431,7 @@ $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repe
         vm.termsLink = '';
         vm.imageLink = '';
         vm.image = '';
+        vm.sectionsList = [];
 
         /* Functions */
         vm.canShowLink = canShowLink;
@@ -1456,6 +1457,7 @@ $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repe
             vm.termsLink = NG_DOCS.__options.legal.termsLink;
             vm.imageLink = NG_DOCS.__options.imageLink;
             vm.image = NG_DOCS.__options.image;
+            vm.sectionsList = mtdNavSectionService.getSectionsAsList(vm.sections)
         }
 
         /**
@@ -1939,7 +1941,8 @@ $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repe
             isActiveSection: isActiveSection,
             canShowSubSections: canShowSubSections,
             setActiveSection: setActiveSection,
-            openSubSection: openSubSection
+            openSubSection: openSubSection,
+            getSectionsAsList: getSectionsAsList
         };
 
         return service;
@@ -2033,6 +2036,23 @@ $templateCache.put("app/mtd-nav/modules/mtd-nav-modules.html","<div data-ng-repe
                 var moduleName = section.pages[pageId].moduleName;
                 section.modules[moduleName].showContents = true;
             }
+        }
+
+        /**
+         * @ngdoc method
+         * @name getSectionsAsList
+         * @methodOf docsApp.nav.service:mtdNavSectionService
+         * @description
+         * Get the sections as a list for ng-repeat. Necessary for angular v1.5.0
+         * See {@link https://docs.angularjs.org/error/orderBy/notarray     angular error docs} for more info
+         *
+         * @param {object} sectionsObj  the list of sections as an object
+         * @returns {Array} sections as an array
+         */
+        function getSectionsAsList(sectionsObj) {
+            return Object.keys(sectionsObj).map(function (key) {
+                return sectionsObj[key];
+            })
         }
 
         /* --- Helper Functions --- */
